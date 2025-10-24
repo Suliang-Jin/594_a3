@@ -1,17 +1,114 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-  </head>
-  <body>
-    <crowd-form>
-      <p>Is the image below a cat or a dog?</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg" width="250" />
-      <crowd-radio-group>
-        <crowd-radio-button name="label" value="cat">Cat</crowd-radio-button>
-        <crowd-radio-button name="label" value="dog">Dog</crowd-radio-button>
-      </crowd-radio-group>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Humor Rating Task</title>
+  <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+  <style>
+    body {
+      font-family: "Helvetica", sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .section {
+      margin-top: 25px;
+    }
+    .headline {
+      padding: 15px;
+      background: #f3f3f3;
+      border-radius: 8px;
+    }
+    .rating {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    .rating input {
+      display: none;
+    }
+    .rating label {
+      transition: transform 0.2s ease;
+    }
+    .rating input:checked + label {
+      transform: scale(1.2);
+    }
+    .reasoning {
+      margin-top: 10px;
+      width: 100%;
+    }
+    .submit {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>📰 Humor Rating Task</h2>
+
+    <crowd-form answer-format="flatten-objects">
+      <!-- Introduction -->
+      <div class="section">
+        <p><strong>Introduction:</strong></p>
+        <p>In this task, you will see an <em>original news headline</em> and an <em>edited version</em>. Your goal is to rate how funny the edited version is, using the icons below. Then, optionally, explain your reasoning.</p>
+      </div>
+
+      <!-- Task display -->
+      <div class="section">
+        <p><strong>Original headline:</strong></p>
+        <div class="headline" id="orig-headline">
+          <!-- Placeholder: dynamically replace with real data if needed -->
+          Scientists discover coffee boosts productivity, but only until lunch.
+        </div>
+
+        <p style="margin-top:15px;"><strong>Edited headline:</strong></p>
+        <div class="headline" id="edited-headline">
+          <!-- Placeholder -->
+          Scientists discover coffee boosts productivity, but only until someone steals your mug.
+        </div>
+      </div>
+
+      <!-- Rating section -->
+      <div class="section">
+        <p><strong>How funny is the edited headline?</strong></p>
+        <div class="rating">
+          <input type="radio" id="low" name="humor_rating" value="less_funny">
+          <label for="low" title="Less funny">👎</label>
+
+          <input type="radio" id="medium" name="humor_rating" value="mediocre">
+          <label for="medium" title="Mediocre">😐</label>
+
+          <input type="radio" id="high" name="humor_rating" value="funny">
+          <label for="high" title="Funny">👍</label>
+        </div>
+      </div>
+
+      <!-- Optional reasoning -->
+      <div class="section">
+        <label for="reasoning"><strong>Optional:</strong> Why did you choose this rating?</label>
+        <textarea id="reasoning" name="reasoning" rows="3" class="reasoning" placeholder="Write your reasoning here (optional)..."></textarea>
+      </div>
+
+      <div class="submit">
+        <crowd-button form-action="submit">Submit</crowd-button>
+      </div>
     </crowd-form>
-  </body>
+  </div>
+</body>
 </html>
