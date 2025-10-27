@@ -207,21 +207,108 @@
 
   // Check if we're in preview mode
   function isPreviewMode() {
-    // Check if we're in MTurk preview (no worker ID available)
-    if (typeof window.turkGetParam === 'function') {
-      const workerId = window.turkGetParam('workerId');
-      return !workerId || workerId === '';
+    console.log('=== CHECKING PREVIEW MODE ===');
+    
+    // Method 1: Check if turkGetParam function exists
+    if (typeof window.turkGetParam !== 'function') {
+      console.log('turkGetParam function not available - assuming preview mode');
+      return true;
     }
-    // If turkGetParam doesn't exist, assume we're in preview
-    return true;
+    
+    // Method 2: Try to get worker ID
+    try {
+      const workerId = window.turkGetParam('workerId');
+      console.log('Worker ID from turkGetParam:', workerId);
+      
+      // Check if worker ID is valid
+      if (!workerId || workerId === '' || workerId === 'undefined' || workerId === 'null') {
+        console.log('No valid worker ID found - preview mode');
+        return true;
+      }
+      
+      console.log('Valid worker ID found - not preview mode');
+      return false;
+    } catch (error) {
+      console.log('Error getting worker ID:', error, '- assuming preview mode');
+      return true;
+    }
+  }
+  
+  // Alternative preview detection method
+  function isPreviewModeAlternative() {
+    console.log('=== ALTERNATIVE PREVIEW CHECK ===');
+    
+    // Check URL for preview indicators
+    const url = window.location.href;
+    console.log('Current URL:', url);
+    
+    // Check if URL contains preview indicators
+    if (url.includes('preview') || url.includes('sandbox')) {
+      console.log('URL contains preview/sandbox - likely preview mode');
+      return true;
+    }
+    
+    // Check if we're in an iframe (MTurk preview is often in iframe)
+    if (window !== window.top) {
+      console.log('In iframe - might be preview mode');
+      // But don't return true here as accepted HITs are also in iframes
+    }
+    
+    return false;
+  }
+
+  // Get worker's seen headlines from localStorage
+  function getWorkerSeenHeadlines(workerId) {
+    const key = `worker_seen_headlines_${workerId}`;
+    const seen = localStorage.getItem(key);
+    return seen ? JSON.parse(seen) : [];
+  }
+  
+  // Mark headline as seen for worker
+  function markHeadlineAsSeen(workerId, headlineId) {
+    const key = `worker_seen_headlines_${workerId}`;
+    const seen = getWorkerSeenHeadlines(workerId);
+    if (!seen.includes(headlineId)) {
+      seen.push(headlineId);
+      localStorage.setItem(key, JSON.stringify(seen));
+      console.log(`Marked headline ${headlineId} as seen for worker ${workerId}`);
+    }
+  }
+  
+  // Get available headlines for worker (not seen before)
+  function getAvailableHeadlines(workerId) {
+    const seen = getWorkerSeenHeadlines(workerId);
+    const available = [];
+    
+    for (let i = 0; i < headlines.length; i++) {
+      if (!seen.includes(i)) {
+        available.push(i);
+      }
+    }
+    
+    console.log(`Worker ${workerId} has seen headlines:`, seen);
+    console.log(`Available headlines for worker:`, available);
+    
+    return available;
   }
 
   // Load and display headline
   function loadHeadline() {
-    const workerId = getWorkerId();
+    console.log('=== LOADING HEADLINE ===');
     
-    // Check if we're in preview mode
-    if (isPreviewMode()) {
+    const workerId = getWorkerId();
+    console.log('Worker ID:', workerId);
+    
+    // Check if we're in preview mode using multiple methods
+    const isPreview1 = isPreviewMode();
+    const isPreview2 = isPreviewModeAlternative();
+    const isPreview = isPreview1 || isPreview2;
+    
+    console.log('Is preview mode (method 1):', isPreview1);
+    console.log('Is preview mode (method 2):', isPreview2);
+    console.log('Final preview mode decision:', isPreview);
+    
+    if (isPreview) {
       // Show placeholder message in preview
       document.getElementById("orig-headline").textContent = "The headline will be loaded after you accept the HIT.";
       document.getElementById("edited-headline").textContent = "The edited headline will be loaded after you accept the HIT.";
@@ -230,12 +317,37 @@
     }
     
     // Not in preview mode - load actual headline
-    const selectedId = Math.floor(Math.random() * headlines.length);
+    console.log('Not in preview mode - loading actual headline');
+    
+    // Get available headlines for this worker
+    const availableHeadlines = getAvailableHeadlines(workerId);
+    
+    if (availableHeadlines.length === 0) {
+      // Worker has seen all headlines
+      document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
+      document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
+      console.log("Worker has seen all headlines");
+      return;
+    }
+    
+    // Randomly select from available headlines
+    const randomIndex = Math.floor(Math.random() * availableHeadlines.length);
+    const selectedId = availableHeadlines[randomIndex];
+    
+    console.log('Available headlines:', availableHeadlines);
+    console.log('Randomly selected headline ID:', selectedId);
     
     // Display the selected headline
     const h = headlines[selectedId];
+    console.log('Selected headline:', h);
+    
     document.getElementById("orig-headline").textContent = h.original;
     document.getElementById("edited-headline").textContent = h.edited;
+    
+    console.log('Headlines displayed successfully');
+    
+    // Mark this headline as seen for this worker
+    markHeadlineAsSeen(workerId, selectedId);
     
     // Add hidden fields
     const headlineInput = document.createElement('input');
@@ -250,8 +362,37 @@
     workerInput.value = workerId;
     document.querySelector('crowd-form').appendChild(workerInput);
     
-    console.log(`Worker ${workerId} assigned headline ${selectedId}: ${h.original}`);
+    console.log(`✅ Worker ${workerId} assigned headline ${selectedId}: ${h.original}`);
   }
+
+  // Test function to verify random headline generation
+  function testRandomHeadline() {
+    console.log('=== TESTING RANDOM HEADLINE GENERATION ===');
+    const selectedId = Math.floor(Math.random() * headlines.length);
+    const h = headlines[selectedId];
+    console.log('Random headline ID:', selectedId);
+    console.log('Random headline:', h);
+    return h;
+  }
+  
+  // Helper function to clear worker's seen headlines (for testing)
+  function clearWorkerHistory(workerId) {
+    const key = `worker_seen_headlines_${workerId}`;
+    localStorage.removeItem(key);
+    console.log(`Cleared history for worker: ${workerId}`);
+  }
+  
+  // Helper function to check worker's seen headlines
+  function checkWorkerHistory(workerId) {
+    const seen = getWorkerSeenHeadlines(workerId);
+    console.log(`Worker ${workerId} has seen headlines:`, seen);
+    return seen;
+  }
+  
+  // Make test functions available globally
+  window.testRandomHeadline = testRandomHeadline;
+  window.clearWorkerHistory = clearWorkerHistory;
+  window.checkWorkerHistory = checkWorkerHistory;
 
   // Load headline when page loads
   loadHeadline();
