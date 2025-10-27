@@ -209,13 +209,13 @@
   function loadHeadline() {
     const workerId = getWorkerId();
     const workerKey = `worker_assignments_${workerId}`;
-    const sessionKey = `current_headline_${workerId}`;
     
-    // Check if we already have a headline assigned for this session
-    let selectedId = localStorage.getItem(sessionKey);
+    // Check URL parameters first
+    const urlParams = new URLSearchParams(window.location.search);
+    let selectedId = urlParams.get('headline_id');
     
     if (selectedId === null) {
-      // No headline assigned yet, get worker's history
+      // No headline ID in URL, get worker's history and select randomly
       const assignedHeadlines = JSON.parse(localStorage.getItem(workerKey) || '[]');
       
       // Find available headlines
@@ -230,8 +230,10 @@
         // Randomly select from available headlines
         selectedId = availableHeadlines[Math.floor(Math.random() * availableHeadlines.length)];
         
-        // Store the selected headline for this session
-        localStorage.setItem(sessionKey, selectedId);
+        // Update URL with selected headline ID
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('headline_id', selectedId);
+        window.history.replaceState({}, '', newUrl);
         
         // Mark as assigned to worker's history
         assignedHeadlines.push(selectedId);
@@ -242,6 +244,9 @@
         document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
         return;
       }
+    } else {
+      // Headline ID from URL, convert to number
+      selectedId = parseInt(selectedId);
     }
     
     // Display the selected headline
