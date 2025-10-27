@@ -174,8 +174,17 @@
   <script>
   async function loadHeadline() {
     try {
-      // Get worker ID from MTurk environment
-      const workerId = window.turkGetParam('workerId') || 'unknown_worker';
+      // Get worker ID from MTurk environment (with fallback for testing)
+      let workerId = 'unknown_worker';
+      
+      if (typeof window.turkGetParam === 'function') {
+        workerId = window.turkGetParam('workerId') || 'unknown_worker';
+      } else {
+        // Fallback for testing outside MTurk environment
+        workerId = 'test_worker_' + Math.random().toString(36).substr(2, 9);
+        console.log('⚠️ MTurk environment not detected, using test worker ID:', workerId);
+      }
+      
       console.log('Worker ID:', workerId);
       
       // Load headlines data
