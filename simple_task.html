@@ -205,49 +205,24 @@
     }
   }
 
+  // Simple hash-based headline selection (deterministic)
+  function getHeadlineId(workerId) {
+    // Create a simple hash from worker ID
+    let hash = 0;
+    for (let i = 0; i < workerId.length; i++) {
+      const char = workerId.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32-bit integer
+    }
+    
+    // Use absolute value and modulo to get headline index
+    return Math.abs(hash) % headlines.length;
+  }
+
   // Load and display headline
   function loadHeadline() {
     const workerId = getWorkerId();
-    const workerKey = `worker_assignments_${workerId}`;
-    
-    // Check URL parameters first
-    const urlParams = new URLSearchParams(window.location.search);
-    let selectedId = urlParams.get('headline_id');
-    
-    if (selectedId === null) {
-      // No headline ID in URL, get worker's history and select randomly
-      const assignedHeadlines = JSON.parse(localStorage.getItem(workerKey) || '[]');
-      
-      // Find available headlines
-      const availableHeadlines = [];
-      for (let i = 0; i < headlines.length; i++) {
-        if (!assignedHeadlines.includes(i)) {
-          availableHeadlines.push(i);
-        }
-      }
-      
-      if (availableHeadlines.length > 0) {
-        // Randomly select from available headlines
-        selectedId = availableHeadlines[Math.floor(Math.random() * availableHeadlines.length)];
-        
-        // Update URL with selected headline ID
-        const newUrl = new URL(window.location);
-        newUrl.searchParams.set('headline_id', selectedId);
-        window.history.replaceState({}, '', newUrl);
-        
-        // Mark as assigned to worker's history
-        assignedHeadlines.push(selectedId);
-        localStorage.setItem(workerKey, JSON.stringify(assignedHeadlines));
-      } else {
-        // All headlines completed
-        document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
-        document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
-        return;
-      }
-    } else {
-      // Headline ID from URL, convert to number
-      selectedId = parseInt(selectedId);
-    }
+    const selectedId = getHeadlineId(workerId);
     
     // Display the selected headline
     const h = headlines[selectedId];
@@ -266,6 +241,8 @@
     workerInput.name = 'worker_id';
     workerInput.value = workerId;
     document.querySelector('crowd-form').appendChild(workerInput);
+    
+    console.log(`Worker ${workerId} assigned headline ${selectedId}: ${h.original}`);
   }
 
   // Load headline when page loads
