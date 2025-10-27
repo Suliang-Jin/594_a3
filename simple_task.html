@@ -211,8 +211,19 @@
     
     // Method 1: Check if turkGetParam function exists
     if (typeof window.turkGetParam !== 'function') {
-      console.log('turkGetParam function not available - assuming preview mode');
-      return true;
+      console.log('turkGetParam function not available - checking URL for preview indicators');
+      
+      // If turkGetParam doesn't exist, check URL for preview indicators
+      const url = window.location.href;
+      console.log('Current URL:', url);
+      
+      if (url.includes('preview') || url.includes('sandbox')) {
+        console.log('URL contains preview/sandbox - preview mode');
+        return true;
+      }
+      
+      console.log('No preview indicators in URL - not preview mode');
+      return false;
     }
     
     // Method 2: Try to get worker ID
@@ -222,15 +233,33 @@
       
       // Check if worker ID is valid
       if (!workerId || workerId === '' || workerId === 'undefined' || workerId === 'null') {
-        console.log('No valid worker ID found - preview mode');
-        return true;
+        console.log('No valid worker ID found - checking URL for preview indicators');
+        
+        // If no worker ID, check URL
+        const url = window.location.href;
+        if (url.includes('preview') || url.includes('sandbox')) {
+          console.log('URL contains preview/sandbox - preview mode');
+          return true;
+        }
+        
+        console.log('No preview indicators in URL - not preview mode');
+        return false;
       }
       
       console.log('Valid worker ID found - not preview mode');
       return false;
     } catch (error) {
-      console.log('Error getting worker ID:', error, '- assuming preview mode');
-      return true;
+      console.log('Error getting worker ID:', error, '- checking URL for preview indicators');
+      
+      // If error getting worker ID, check URL
+      const url = window.location.href;
+      if (url.includes('preview') || url.includes('sandbox')) {
+        console.log('URL contains preview/sandbox - preview mode');
+        return true;
+      }
+      
+      console.log('No preview indicators in URL - not preview mode');
+      return false;
     }
   }
   
@@ -299,14 +328,9 @@
     const workerId = getWorkerId();
     console.log('Worker ID:', workerId);
     
-    // Check if we're in preview mode using multiple methods
-    const isPreview1 = isPreviewMode();
-    const isPreview2 = isPreviewModeAlternative();
-    const isPreview = isPreview1 || isPreview2;
-    
-    console.log('Is preview mode (method 1):', isPreview1);
-    console.log('Is preview mode (method 2):', isPreview2);
-    console.log('Final preview mode decision:', isPreview);
+    // Check if we're in preview mode
+    const isPreview = isPreviewMode();
+    console.log('Is preview mode:', isPreview);
     
     if (isPreview) {
       // Show placeholder message in preview
@@ -315,6 +339,9 @@
       console.log("Preview mode: Showing placeholder message");
       return;
     }
+    
+    // If we get here, we're not in preview mode - load headlines
+    console.log("Not in preview mode - proceeding to load headlines");
     
     // Not in preview mode - load actual headline
     console.log('Not in preview mode - loading actual headline');
@@ -389,10 +416,34 @@
     return seen;
   }
   
+  // Force load headlines (for debugging)
+  function forceLoadHeadlines() {
+    console.log('=== FORCING HEADLINE LOAD ===');
+    const workerId = getWorkerId();
+    const availableHeadlines = getAvailableHeadlines(workerId);
+    
+    if (availableHeadlines.length === 0) {
+      document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
+      document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
+      return;
+    }
+    
+    const randomIndex = Math.floor(Math.random() * availableHeadlines.length);
+    const selectedId = availableHeadlines[randomIndex];
+    const h = headlines[selectedId];
+    
+    document.getElementById("orig-headline").textContent = h.original;
+    document.getElementById("edited-headline").textContent = h.edited;
+    
+    markHeadlineAsSeen(workerId, selectedId);
+    console.log(`Forced load: Worker ${workerId} assigned headline ${selectedId}: ${h.original}`);
+  }
+  
   // Make test functions available globally
   window.testRandomHeadline = testRandomHeadline;
   window.clearWorkerHistory = clearWorkerHistory;
   window.checkWorkerHistory = checkWorkerHistory;
+  window.forceLoadHeadlines = forceLoadHeadlines;
 
   // Load headline when page loads
   loadHeadline();
