@@ -170,58 +170,67 @@
     </crowd-form>
   </div>
 
-  <!-- ✅ Dynamic headline loader with worker tracking -->
+  <!-- ✅ Dynamic headline loader with random assignment -->
   <script>
   async function loadHeadline() {
     try {
-      const params = new URLSearchParams(window.location.search);
-      const headlineId = parseInt(params.get("headline_id") || "0");
-      
       // Get worker ID from MTurk environment
-      const workerId = window.turkGetParam('workerId') || 'unknown';
+      const workerId = window.turkGetParam('workerId') || 'unknown_worker';
       
-      // Store worker-headline assignment for tracking
-      const assignment = {
-        workerId: workerId,
-        headlineId: headlineId,
-        timestamp: new Date().toISOString()
-      };
-      
-      // Store in localStorage to track worker assignments
-      const workerAssignments = JSON.parse(localStorage.getItem('workerAssignments') || '[]');
-      const existingAssignment = workerAssignments.find(a => a.workerId === workerId && a.headlineId === headlineId);
-      
-      if (!existingAssignment) {
-        workerAssignments.push(assignment);
-        localStorage.setItem('workerAssignments', JSON.stringify(workerAssignments));
-      }
-
+      // Load headlines data
       const response = await fetch("https://suliang-jin.github.io/594_a3/headlines.json");
       const headlines = await response.json();
-
-      if (headlineId >= 0 && headlineId < headlines.length) {
-        const h = headlines[headlineId];
-        document.getElementById("orig-headline").textContent = h.original;
-        document.getElementById("edited-headline").textContent = h.edited;
-        
-        // Add hidden field to track headline ID
-        const headlineIdInput = document.createElement('input');
-        headlineIdInput.type = 'hidden';
-        headlineIdInput.name = 'headline_id';
-        headlineIdInput.value = headlineId;
-        document.querySelector('crowd-form').appendChild(headlineIdInput);
-        
-        // Add hidden field to track worker ID
-        const workerIdInput = document.createElement('input');
-        workerIdInput.type = 'hidden';
-        workerIdInput.name = 'worker_id';
-        workerIdInput.value = workerId;
-        document.querySelector('crowd-form').appendChild(workerIdInput);
-        
-      } else {
-        document.getElementById("orig-headline").textContent = "⚠️ Invalid headline ID.";
-        document.getElementById("edited-headline").textContent = "";
+      
+      // Get worker's assignment history
+      const workerKey = `worker_assignments_${workerId}`;
+      const assignedHeadlines = JSON.parse(localStorage.getItem(workerKey) || '[]');
+      
+      // Find available headlines (not yet seen by this worker)
+      const availableHeadlines = [];
+      for (let i = 0; i < headlines.length; i++) {
+        if (!assignedHeadlines.includes(i)) {
+          availableHeadlines.push(i);
+        }
       }
+      
+      let selectedHeadlineId;
+      
+      if (availableHeadlines.length > 0) {
+        // Randomly select from available headlines
+        selectedHeadlineId = availableHeadlines[Math.floor(Math.random() * availableHeadlines.length)];
+        
+        // Mark this headline as assigned to this worker
+        assignedHeadlines.push(selectedHeadlineId);
+        localStorage.setItem(workerKey, JSON.stringify(assignedHeadlines));
+        
+        console.log(`Worker ${workerId} assigned headline ${selectedHeadlineId}`);
+        console.log(`Remaining available headlines: ${availableHeadlines.length - 1}`);
+      } else {
+        // All headlines have been seen, show a message
+        selectedHeadlineId = 0; // fallback
+        document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
+        document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
+        return;
+      }
+      
+      // Display the selected headline
+      const h = headlines[selectedHeadlineId];
+      document.getElementById("orig-headline").textContent = h.original;
+      document.getElementById("edited-headline").textContent = h.edited;
+      
+      // Add hidden fields to track the assignment
+      const headlineIdInput = document.createElement('input');
+      headlineIdInput.type = 'hidden';
+      headlineIdInput.name = 'headline_id';
+      headlineIdInput.value = selectedHeadlineId;
+      document.querySelector('crowd-form').appendChild(headlineIdInput);
+      
+      const workerIdInput = document.createElement('input');
+      workerIdInput.type = 'hidden';
+      workerIdInput.name = 'worker_id';
+      workerIdInput.value = workerId;
+      document.querySelector('crowd-form').appendChild(workerIdInput);
+      
     } catch (err) {
       document.getElementById("orig-headline").textContent = "⚠️ Failed to load headline.";
       document.getElementById("edited-headline").textContent = "";
