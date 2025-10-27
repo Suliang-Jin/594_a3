@@ -176,10 +176,21 @@
     try {
       // Get worker ID from MTurk environment
       const workerId = window.turkGetParam('workerId') || 'unknown_worker';
+      console.log('Worker ID:', workerId);
       
       // Load headlines data
+      console.log('Fetching headlines from: https://suliang-jin.github.io/594_a3/data/headlines.json');
       const response = await fetch("https://suliang-jin.github.io/594_a3/data/headlines.json");
+      
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const headlines = await response.json();
+      console.log('Headlines loaded:', headlines);
       
       // Get worker's assignment history
       const workerKey = `worker_assignments_${workerId}`;
@@ -232,9 +243,29 @@
       document.querySelector('crowd-form').appendChild(workerIdInput);
       
     } catch (err) {
-      document.getElementById("orig-headline").textContent = "⚠️ Failed to load headline.";
-      document.getElementById("edited-headline").textContent = "";
       console.error("Error loading headline data:", err);
+      
+      // Fallback: try alternative URL or show static content
+      try {
+        console.log('Trying fallback URL...');
+        const fallbackResponse = await fetch("https://suliang-jin.github.io/594_a3/headlines.json");
+        if (fallbackResponse.ok) {
+          const headlines = await fallbackResponse.json();
+          console.log('Fallback successful:', headlines);
+          
+          // Use the first headline as fallback
+          const h = headlines[0];
+          document.getElementById("orig-headline").textContent = h.original;
+          document.getElementById("edited-headline").textContent = h.edited;
+          return;
+        }
+      } catch (fallbackErr) {
+        console.error("Fallback also failed:", fallbackErr);
+      }
+      
+      // If all else fails, show error message
+      document.getElementById("orig-headline").textContent = "⚠️ Failed to load headline. Please check the console for details.";
+      document.getElementById("edited-headline").textContent = "Error: " + err.message;
     }
   }
   loadHeadline();
