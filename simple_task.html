@@ -209,47 +209,58 @@
   function loadHeadline() {
     const workerId = getWorkerId();
     const workerKey = `worker_assignments_${workerId}`;
-    const assignedHeadlines = JSON.parse(localStorage.getItem(workerKey) || '[]');
+    const sessionKey = `current_headline_${workerId}`;
     
-    // Find available headlines
-    const availableHeadlines = [];
-    for (let i = 0; i < headlines.length; i++) {
-      if (!assignedHeadlines.includes(i)) {
-        availableHeadlines.push(i);
+    // Check if we already have a headline assigned for this session
+    let selectedId = localStorage.getItem(sessionKey);
+    
+    if (selectedId === null) {
+      // No headline assigned yet, get worker's history
+      const assignedHeadlines = JSON.parse(localStorage.getItem(workerKey) || '[]');
+      
+      // Find available headlines
+      const availableHeadlines = [];
+      for (let i = 0; i < headlines.length; i++) {
+        if (!assignedHeadlines.includes(i)) {
+          availableHeadlines.push(i);
+        }
+      }
+      
+      if (availableHeadlines.length > 0) {
+        // Randomly select from available headlines
+        selectedId = availableHeadlines[Math.floor(Math.random() * availableHeadlines.length)];
+        
+        // Store the selected headline for this session
+        localStorage.setItem(sessionKey, selectedId);
+        
+        // Mark as assigned to worker's history
+        assignedHeadlines.push(selectedId);
+        localStorage.setItem(workerKey, JSON.stringify(assignedHeadlines));
+      } else {
+        // All headlines completed
+        document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
+        document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
+        return;
       }
     }
     
-    if (availableHeadlines.length > 0) {
-      // Randomly select from available headlines
-      const selectedId = availableHeadlines[Math.floor(Math.random() * availableHeadlines.length)];
-      
-      // Mark as assigned
-      assignedHeadlines.push(selectedId);
-      localStorage.setItem(workerKey, JSON.stringify(assignedHeadlines));
-      
-      // Display headline
-      const h = headlines[selectedId];
-      document.getElementById("orig-headline").textContent = h.original;
-      document.getElementById("edited-headline").textContent = h.edited;
-      
-      // Add hidden fields
-      const headlineInput = document.createElement('input');
-      headlineInput.type = 'hidden';
-      headlineInput.name = 'headline_id';
-      headlineInput.value = selectedId;
-      document.querySelector('crowd-form').appendChild(headlineInput);
-      
-      const workerInput = document.createElement('input');
-      workerInput.type = 'hidden';
-      workerInput.name = 'worker_id';
-      workerInput.value = workerId;
-      document.querySelector('crowd-form').appendChild(workerInput);
-      
-    } else {
-      // All headlines completed
-      document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
-      document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
-    }
+    // Display the selected headline
+    const h = headlines[selectedId];
+    document.getElementById("orig-headline").textContent = h.original;
+    document.getElementById("edited-headline").textContent = h.edited;
+    
+    // Add hidden fields
+    const headlineInput = document.createElement('input');
+    headlineInput.type = 'hidden';
+    headlineInput.name = 'headline_id';
+    headlineInput.value = selectedId;
+    document.querySelector('crowd-form').appendChild(headlineInput);
+    
+    const workerInput = document.createElement('input');
+    workerInput.type = 'hidden';
+    workerInput.name = 'worker_id';
+    workerInput.value = workerId;
+    document.querySelector('crowd-form').appendChild(workerInput);
   }
 
   // Load headline when page loads
