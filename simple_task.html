@@ -205,27 +205,73 @@
     }
   }
 
-  // Simple hash-based headline selection (deterministic)
-  function getHeadlineId(workerId) {
-    // Create a simple hash from worker ID
-    let hash = 0;
-    for (let i = 0; i < workerId.length; i++) {
-      const char = workerId.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32-bit integer
+  // Get trial set from URL parameters
+  function getTrialSet() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const trialSetParam = urlParams.get('trial_set');
+    
+    if (!trialSetParam) {
+      console.error('No trial_set parameter found in URL');
+      return null;
     }
     
-    // Use absolute value and modulo to get headline index
-    return Math.abs(hash) % headlines.length;
+    // Parse comma-separated headline IDs
+    const trialSet = trialSetParam.split(',').map(id => parseInt(id.trim()));
+    console.log('Trial set from URL:', trialSet);
+    
+    return trialSet;
+  }
+
+  // Select a random headline from the trial set
+  function selectHeadlineFromTrialSet(trialSet) {
+    if (!trialSet || trialSet.length === 0) {
+      console.error('Invalid trial set');
+      return null;
+    }
+    
+    // Randomly select one headline from the trial set
+    const randomIndex = Math.floor(Math.random() * trialSet.length);
+    const selectedId = trialSet[randomIndex];
+    
+    console.log(`Selected headline ${selectedId} from trial set ${trialSet}`);
+    return selectedId;
   }
 
   // Load and display headline
   function loadHeadline() {
+    console.log('=== LOADING HEADLINE FROM URL PARAMETERS ===');
+    
     const workerId = getWorkerId();
-    const selectedId = getHeadlineId(workerId);
+    console.log('Worker ID:', workerId);
+    
+    // Get trial set from URL
+    const trialSet = getTrialSet();
+    if (!trialSet) {
+      document.getElementById("orig-headline").textContent = "Error: No trial set specified in URL";
+      document.getElementById("edited-headline").textContent = "Please contact the requester";
+      return;
+    }
+    
+    // Select random headline from trial set
+    const selectedId = selectHeadlineFromTrialSet(trialSet);
+    if (selectedId === null) {
+      document.getElementById("orig-headline").textContent = "Error: Invalid trial set";
+      document.getElementById("edited-headline").textContent = "Please contact the requester";
+      return;
+    }
+    
+    // Validate headline ID
+    if (selectedId < 0 || selectedId >= headlines.length) {
+      console.error('Invalid headline ID:', selectedId);
+      document.getElementById("orig-headline").textContent = "Error: Invalid headline ID";
+      document.getElementById("edited-headline").textContent = "Please contact the requester";
+      return;
+    }
     
     // Display the selected headline
     const h = headlines[selectedId];
+    console.log('Selected headline:', h);
+    
     document.getElementById("orig-headline").textContent = h.original;
     document.getElementById("edited-headline").textContent = h.edited;
     
@@ -242,7 +288,15 @@
     workerInput.value = workerId;
     document.querySelector('crowd-form').appendChild(workerInput);
     
-    console.log(`Worker ${workerId} assigned headline ${selectedId}: ${h.original}`);
+    const trialSetInput = document.createElement('input');
+    trialSetInput.type = 'hidden';
+    trialSetInput.name = 'trial_set';
+    trialSetInput.value = trialSet.join(',');
+    document.querySelector('crowd-form').appendChild(trialSetInput);
+    
+    console.log(`✅ Worker ${workerId} assigned headline ${selectedId} from trial set ${trialSet.join(',')}`);
+    console.log(`   Original: ${h.original}`);
+    console.log(`   Edited: ${h.edited}`);
   }
 
   // Load headline when page loads
