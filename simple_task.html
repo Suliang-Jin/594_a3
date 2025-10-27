@@ -122,10 +122,10 @@
   // ==================== Embedded dataset ====================
   const headlines = [
     {"original": "WHO calls for elimination of <em>trans fat</em> by 2023", "edited": "WHO calls for monetization of trans fat by 2023"},
-    {"original": "NASA discovers new planet outside solar system", "edited": "NASA discovers new PR intern outside solar system"},
-    {"original": "Economists predict strong growth next quarter", "edited": "Economists predict groan next quarter"},
-    {"original": "Man wins lottery for second time this year", "edited": "Man wins existential crisis for second time this year"},
-    {"original": "Cats take over city hall during council meeting", "edited": "Cats take over city mall during council meeting"}
+    {"original": "NASA discovers new planet outside solar <em>system</em>", "edited": "NASA discovers new PR intern outside solar system"},
+    // {"original": "Economists predict strong growth next quarter", "edited": "Economists predict groan next quarter"},
+    // {"original": "Man wins lottery for second time this year", "edited": "Man wins existential crisis for second time this year"},
+    // {"original": "Cats take over city hall during council meeting", "edited": "Cats take over city mall during council meeting"}
   ];
 
   // Utility: get MTurk param
@@ -169,8 +169,8 @@
     localStorage.setItem(storageKey, JSON.stringify(seen));
 
     const h = headlines[selectedId];
-    document.getElementById("orig-headline").textContent = h.original;
-    document.getElementById("edited-headline").textContent = h.edited;
+    document.getElementById("orig-headline").innerHTML = h.original;
+    document.getElementById("edited-headline").innerHTML = h.edited;
 
     // Hidden fields for export
     const form = document.querySelector('crowd-form');
