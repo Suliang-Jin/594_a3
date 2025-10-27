@@ -12,7 +12,7 @@
       padding: 20px;
     }
     .container {
-      max-width: 700px;
+      max-width: 1000px;
       margin: auto;
       background: #fff;
       border-radius: 10px;
@@ -33,19 +33,40 @@
     }
     .rating {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 10px;
       margin-top: 15px;
-      font-size: 2rem;
+      font-size: 18px;
       cursor: pointer;
     }
     .rating input {
-      display: none;
+        display: none;
     }
     .rating label {
-      transition: transform 0.2s ease;
+        transition: all 0.3s ease;
+        padding: 10px 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        width: 180px;
+        height: 30px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+    .rating label:hover {
+        background-color: #e9e9e9;
+        border-color: #999;
     }
     .rating input:checked + label {
-      transform: scale(1.2);
+        background-color: #4CAF50;
+        border-color: #4CAF50;
+        color: white;
+    }
+    .rating input:checked + label:hover {
+        background-color: #45a049;
     }
     .reasoning {
       margin-top: 10px;
@@ -55,32 +76,59 @@
       text-align: center;
       margin-top: 30px;
     }
+
+    .dropdown {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        min-width: 150px;
+    }
+
+    .dropdown:hover {
+        border-color: #999;
+        background-color: #e9e9e9;
+    }
+
+    .dropdown:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h2>📰 Humor Rating Task</h2>
+    <h1 style="text-align: center;">📰 Humor Rating Task</h1>
 
     <crowd-form answer-format="flatten-objects">
       <!-- Introduction -->
-      <div class="section">
-        <p><strong>Introduction:</strong></p>
-        <p>In this task, you will see an <em>original news headline</em> and an <em>edited version</em>. Your goal is to rate how funny the edited version is, using the icons below. Then, optionally, explain your reasoning.</p>
+      <div class="section" style="font-size: 18px; border: 2px solid transparent; padding: 15px; margin: 5px 0; border-radius: 8px; background-color: #f0f0f0;">
+          <h3>Instruction</h3>
+          <p>Welcome to humor rating task! 🎉</p>
+          <p>In this task, you will see an <em>original news headline</em> and an <em>edited version with one word replaced</em>. Your goal is to rate how funny the edited version is (less funny 👎, mediocre 😐 or funny 👍). Then, please tell us how much you understand the context of the headline. Optionally, you can provide a reasoning on your humor rating. </p>
+          <p>*Note: the headlines are from real news reports and probably contain political contents. Also, the headlines and the edited versions are directly obtained from a CS publication dataset <em>SemEval-2020 Task 7</em>. </p>
+          <h3>Example</h3>
+          <p><strong>Original headline:</strong> WHO calls for <span style="color: blue;">elimination</span> of trans fat by 2023</p>
+          <p><strong>Edited headline:</strong> WHO calls for <span style="color: blue;">monetization</span> of trans fat by 2023</p>
+          <p>As you see, the replaced word is elimination → monetization. You can rate the edited headline with [less funny 👎], [mediocre 😐] or [funny 👍].</p>
       </div>
 
       <!-- Task display -->
       <div class="section">
         <p><strong>Original headline:</strong></p>
         <div class="headline" id="orig-headline">
-          <!-- Placeholder: dynamically replace with real data if needed -->
-          Scientists discover coffee boosts productivity, but only until lunch.
+          Loading headline...
         </div>
 
         <p style="margin-top:15px;"><strong>Edited headline:</strong></p>
         <div class="headline" id="edited-headline">
-          <!-- Placeholder -->
-          Scientists discover coffee boosts productivity, but only until someone steals your mug.
+          Loading edited headline...
         </div>
       </div>
 
@@ -88,20 +136,31 @@
       <div class="section">
         <p><strong>How funny is the edited headline?</strong></p>
         <div class="rating">
-          <input type="radio" id="low" name="humor_rating" value="less_funny">
-          <label for="low" title="Less funny">👎</label>
+          <input type="radio" id="low" name="humor_rating" value="less_funny" required>
+          <label for="low" title="Less funny">Less Funny 👎</label>
 
           <input type="radio" id="medium" name="humor_rating" value="mediocre">
-          <label for="medium" title="Mediocre">😐</label>
+          <label for="medium" title="Mediocre">Mediocre 😐</label>
 
           <input type="radio" id="high" name="humor_rating" value="funny">
-          <label for="high" title="Funny">👍</label>
+          <label for="high" title="Funny">Funny 👍</label>
         </div>
+      </div>
+
+      <div class="section">
+        <p><strong>At a scale of 0 to 3, how much do you think you understand the context of the headline?</strong></p>
+        <select id="scale_rating" name="scale_rating" class="dropdown" required>
+          <option value="" disabled selected hidden>Select a value</option>
+          <option value="0">0 (I don't understand)</option>
+          <option value="1">1 (I understand a little)</option>
+          <option value="2">2 (I understand most of it)</option>
+          <option value="3">3 (I fully understand)</option>
+        </select>
       </div>
 
       <!-- Optional reasoning -->
       <div class="section">
-        <label for="reasoning"><strong>Optional:</strong> Why did you choose this rating?</label>
+        <label for="reasoning"><strong>Optional: </strong>In one or two sentences, why did you choose the rating?</label>
         <textarea id="reasoning" name="reasoning" rows="3" class="reasoning" placeholder="Write your reasoning here (optional)..."></textarea>
       </div>
 
@@ -110,5 +169,27 @@
       </div>
     </crowd-form>
   </div>
+
+  <!-- ✅ Dynamic headline loader -->
+  <script>
+  async function loadHeadline() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get("headline_id") || "0");
+
+      const response = await fetch("https://suliang-jin.github.io/594_a3/headlines.json");
+      const headlines = await response.json();
+
+      const h = headlines[id % headlines.length];
+      document.getElementById("orig-headline").textContent = h.original;
+      document.getElementById("edited-headline").textContent = h.edited;
+    } catch (err) {
+      document.getElementById("orig-headline").textContent = "⚠️ Failed to load headline.";
+      document.getElementById("edited-headline").textContent = "";
+      console.error("Error loading headline data:", err);
+    }
+  }
+  loadHeadline();
+  </script>
 </body>
 </html>
