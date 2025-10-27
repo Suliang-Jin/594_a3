@@ -51,63 +51,77 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1 style="text-align: center;">📰 Humor Rating Task</h1>
-
-    <crowd-form answer-format="flatten-objects">
-      <div class="section" style="font-size: 18px; border: 2px solid transparent; padding: 15px; margin: 5px 0; border-radius: 8px; background-color: #f0f0f0;">
-          <h3>Instruction</h3>
-          <p>Welcome to humor rating task! 🎉</p>
-          <p>In this task, you will see an <em>original news headline</em> and an <em>edited version with one word replaced</em>. Your goal is to rate how funny the edited version is (less funny 👎, mediocre 😐 or funny 👍). Then, please tell us how much you understand the context of the headline.</p>
-      </div>
-
-      <div class="section">
-        <p><strong>Original headline:</strong></p>
-        <div class="headline" id="orig-headline">Loading headline...</div>
-
-        <p style="margin-top:15px;"><strong>Edited headline:</strong></p>
-        <div class="headline" id="edited-headline">Loading edited headline...</div>
-      </div>
-
-      <div class="section">
-        <p><strong>How funny is the edited headline?</strong></p>
-        <div class="rating">
-          <input type="radio" id="low" name="humor_rating" value="less_funny" required>
-          <label for="low">Less Funny 👎</label>
-
-          <input type="radio" id="medium" name="humor_rating" value="mediocre">
-          <label for="medium">Mediocre 😐</label>
-
-          <input type="radio" id="high" name="humor_rating" value="funny">
-          <label for="high">Funny 👍</label>
+    <div class="container">
+      <h1 style="text-align: center;">📰 Humor Rating Task</h1>
+  
+      <crowd-form answer-format="flatten-objects">
+        <!-- Introduction -->
+        <div class="section" style="font-size: 18px; border: 2px solid transparent; padding: 15px; margin: 5px 0; border-radius: 8px; background-color: #f0f0f0;">
+            <h3>Instruction</h3>
+            <p>Welcome to humor rating task! 🎉</p>
+            <p>In this task, you will see an <em>original news headline</em> and an <em>edited version with one word replaced</em>. Your goal is to rate how funny the edited version is (less funny 👎, mediocre 😐 or funny 👍). Then, please tell us how much you understand the context of the headline. Optionally, you can provide a reasoning on your humor rating. </p>
+            <p>*Note: the headlines are from real news reports and probably contain political contents. Also, the headlines and the edited versions are directly obtained from a CS publication dataset <em>SemEval-2020 Task 7</em>. </p>
+            <h3>Example</h3>
+            <p><strong>Original headline:</strong> WHO calls for <span style="color: blue;">elimination</span> of trans fat by 2023</p>
+            <p><strong>Edited headline:</strong> WHO calls for <span style="color: blue;">monetization</span> of trans fat by 2023</p>
+            <p>As you see, the replaced word is elimination → monetization. You can rate the edited headline with [less funny 👎], [mediocre 😐] or [funny 👍].</p>
         </div>
-      </div>
-
-      <div class="section">
-        <p><strong>At a scale of 0–3, how much do you understand the context?</strong></p>
-        <select id="scale_rating" name="scale_rating" class="dropdown" required>
-          <option value="" disabled selected hidden>Select a value</option>
-          <option value="0">0 (I don't understand)</option>
-          <option value="1">1 (A little)</option>
-          <option value="2">2 (Most of it)</option>
-          <option value="3">3 (Fully)</option>
-        </select>
-      </div>
-
-      <div class="section">
-        <label for="reasoning"><strong>Optional:</strong> Why did you choose this rating?</label>
-        <textarea id="reasoning" name="reasoning" rows="3" class="reasoning"
-          placeholder="Write your reasoning here (optional)..."></textarea>
-      </div>
-
-      <div class="submit"><crowd-button form-action="submit">Submit</crowd-button></div>
-    </crowd-form>
+  
+        <!-- Task display -->
+        <div class="section">
+          <p><strong>Original headline:</strong></p>
+          <div class="headline" id="orig-headline">
+            Loading headline...
+          </div>
+  
+          <p style="margin-top:15px;"><strong>Edited headline:</strong></p>
+          <div class="headline" id="edited-headline">
+            Loading edited headline...
+          </div>
+        </div>
+  
+        <!-- Rating section -->
+        <div class="section">
+          <p><strong>How funny is the edited headline?</strong></p>
+          <div class="rating">
+            <input type="radio" id="low" name="humor_rating" value="less_funny" required>
+            <label for="low" title="Less funny">Less Funny 👎</label>
+  
+            <input type="radio" id="medium" name="humor_rating" value="mediocre">
+            <label for="medium" title="Mediocre">Mediocre 😐</label>
+  
+            <input type="radio" id="high" name="humor_rating" value="funny">
+            <label for="high" title="Funny">Funny 👍</label>
+          </div>
+        </div>
+  
+        <div class="section">
+          <p><strong>At a scale of 0 to 3, how much do you think you understand the context of the headline?</strong></p>
+          <select id="scale_rating" name="scale_rating" class="dropdown" required>
+            <option value="" disabled selected hidden>Select a value</option>
+            <option value="0">0 (I don't understand)</option>
+            <option value="1">1 (I understand a little)</option>
+            <option value="2">2 (I understand most of it)</option>
+            <option value="3">3 (I fully understand)</option>
+          </select>
+        </div>
+  
+        <!-- Optional reasoning -->
+        <div class="section">
+          <label for="reasoning"><strong>Optional: </strong>In one or two sentences, why did you choose the rating?</label>
+          <textarea id="reasoning" name="reasoning" rows="3" class="reasoning" placeholder="Write your reasoning here (optional)..."></textarea>
+        </div>
+  
+        <div class="submit">
+          <crowd-button form-action="submit">Submit</crowd-button>
+        </div>
+      </crowd-form>
   </div>
 
   <script>
   // ==================== Embedded dataset ====================
   const headlines = [
-    {"original": "WHO calls for elimination of trans fat by 2023", "edited": "WHO calls for monetization of trans fat by 2023"},
+    {"original": "WHO calls for elimination of <em>trans fat</em> by 2023", "edited": "WHO calls for monetization of trans fat by 2023"},
     {"original": "NASA discovers new planet outside solar system", "edited": "NASA discovers new PR intern outside solar system"},
     {"original": "Economists predict strong growth next quarter", "edited": "Economists predict groan next quarter"},
     {"original": "Man wins lottery for second time this year", "edited": "Man wins existential crisis for second time this year"},
@@ -130,7 +144,7 @@
     // PREVIEW MODE
     if (!workerId) {
       document.getElementById("orig-headline").textContent = "The headline will be generated after the HIT is accepted.";
-      document.getElementById("edited-headline").textContent = "";
+      document.getElementById("edited-headline").textContent = "The edited headline will be generated after the HIT is accepted.";
       return;
     }
 
