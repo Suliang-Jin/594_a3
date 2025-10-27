@@ -172,8 +172,8 @@
 
   <!-- ✅ Simple headline loader with embedded data -->
   <script>
-  // Embedded headlines data (fallback)
-  const embeddedHeadlines = [
+  // Embedded headlines data
+  const headlines = [
     {
       "original": "WHO calls for elimination of trans fat by 2023",
       "edited": "WHO calls for monetization of trans fat by 2023"
@@ -196,95 +196,63 @@
     }
   ];
 
-  async function loadHeadline() {
-    try {
-      // Get worker ID from MTurk environment (with fallback for testing)
-      let workerId = 'unknown_worker';
-      
-      if (typeof window.turkGetParam === 'function') {
-        workerId = window.turkGetParam('workerId') || 'unknown_worker';
-      } else {
-        // Fallback for testing outside MTurk environment
-        workerId = 'test_worker_' + Math.random().toString(36).substr(2, 9);
-        console.log('⚠️ MTurk environment not detected, using test worker ID:', workerId);
+  // Get worker ID (with fallback for testing)
+  function getWorkerId() {
+    if (typeof window.turkGetParam === 'function') {
+      return window.turkGetParam('workerId') || 'unknown_worker';
+    } else {
+      return 'test_worker_' + Math.random().toString(36).substr(2, 9);
+    }
+  }
+
+  // Load and display headline
+  function loadHeadline() {
+    const workerId = getWorkerId();
+    const workerKey = `worker_assignments_${workerId}`;
+    const assignedHeadlines = JSON.parse(localStorage.getItem(workerKey) || '[]');
+    
+    // Find available headlines
+    const availableHeadlines = [];
+    for (let i = 0; i < headlines.length; i++) {
+      if (!assignedHeadlines.includes(i)) {
+        availableHeadlines.push(i);
       }
+    }
+    
+    if (availableHeadlines.length > 0) {
+      // Randomly select from available headlines
+      const selectedId = availableHeadlines[Math.floor(Math.random() * availableHeadlines.length)];
       
-      console.log('Worker ID:', workerId);
+      // Mark as assigned
+      assignedHeadlines.push(selectedId);
+      localStorage.setItem(workerKey, JSON.stringify(assignedHeadlines));
       
-      // Try to load headlines from GitHub first
-      let headlines = embeddedHeadlines; // Default to embedded data
-      
-      try {
-        console.log('Trying to fetch headlines from GitHub...');
-        const response = await fetch("https://suliang-jin.github.io/594_a3/data/headlines.json");
-        
-        if (response.ok) {
-          headlines = await response.json();
-          console.log('✅ Headlines loaded from GitHub:', headlines);
-        } else {
-          console.log('❌ GitHub fetch failed, using embedded data');
-        }
-      } catch (fetchErr) {
-        console.log('❌ GitHub fetch error, using embedded data:', fetchErr.message);
-      }
-      
-      // Get worker's assignment history
-      const workerKey = `worker_assignments_${workerId}`;
-      const assignedHeadlines = JSON.parse(localStorage.getItem(workerKey) || '[]');
-      
-      // Find available headlines (not yet seen by this worker)
-      const availableHeadlines = [];
-      for (let i = 0; i < headlines.length; i++) {
-        if (!assignedHeadlines.includes(i)) {
-          availableHeadlines.push(i);
-        }
-      }
-      
-      let selectedHeadlineId;
-      
-      if (availableHeadlines.length > 0) {
-        // Randomly select from available headlines
-        selectedHeadlineId = availableHeadlines[Math.floor(Math.random() * availableHeadlines.length)];
-        
-        // Mark this headline as assigned to this worker
-        assignedHeadlines.push(selectedHeadlineId);
-        localStorage.setItem(workerKey, JSON.stringify(assignedHeadlines));
-        
-        console.log(`Worker ${workerId} assigned headline ${selectedHeadlineId}`);
-        console.log(`Remaining available headlines: ${availableHeadlines.length - 1}`);
-      } else {
-        // All headlines have been seen, show a message
-        document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
-        document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
-        return;
-      }
-      
-      // Display the selected headline
-      const h = headlines[selectedHeadlineId];
+      // Display headline
+      const h = headlines[selectedId];
       document.getElementById("orig-headline").textContent = h.original;
       document.getElementById("edited-headline").textContent = h.edited;
       
-      // Add hidden fields to track the assignment
-      const headlineIdInput = document.createElement('input');
-      headlineIdInput.type = 'hidden';
-      headlineIdInput.name = 'headline_id';
-      headlineIdInput.value = selectedHeadlineId;
-      document.querySelector('crowd-form').appendChild(headlineIdInput);
+      // Add hidden fields
+      const headlineInput = document.createElement('input');
+      headlineInput.type = 'hidden';
+      headlineInput.name = 'headline_id';
+      headlineInput.value = selectedId;
+      document.querySelector('crowd-form').appendChild(headlineInput);
       
-      const workerIdInput = document.createElement('input');
-      workerIdInput.type = 'hidden';
-      workerIdInput.name = 'worker_id';
-      workerIdInput.value = workerId;
-      document.querySelector('crowd-form').appendChild(workerIdInput);
+      const workerInput = document.createElement('input');
+      workerInput.type = 'hidden';
+      workerInput.name = 'worker_id';
+      workerInput.value = workerId;
+      document.querySelector('crowd-form').appendChild(workerInput);
       
-    } catch (err) {
-      console.error("Error loading headline data:", err);
-      
-      // Show error message
-      document.getElementById("orig-headline").textContent = "⚠️ Failed to load headline. Please check the console for details.";
-      document.getElementById("edited-headline").textContent = "Error: " + err.message;
+    } else {
+      // All headlines completed
+      document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
+      document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
     }
   }
+
+  // Load headline when page loads
   loadHeadline();
   </script>
 </body>
