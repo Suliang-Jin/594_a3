@@ -140,7 +140,6 @@
    // Main logic
    function loadHeadline() {
      const workerId = getMTurkParam('workerId');
-     const headlineId = getMTurkParam('headline_id'); // Get headline ID from URL
 
      // PREVIEW MODE
      if (!workerId) {
@@ -164,27 +163,19 @@
        return;
      }
 
-     // Get the specific headline for this HIT
-     let selectedId;
-     if (headlineId && !isNaN(headlineId)) {
-       selectedId = parseInt(headlineId);
-       if (selectedId < 0 || selectedId >= headlines.length) {
-         selectedId = randInt(headlines.length);
-       }
-     } else {
-       selectedId = randInt(headlines.length);
-     }
-
-     // Check if worker has already seen this specific headline
-     if (completions.includes(selectedId)) {
-       document.getElementById("orig-headline").textContent = "You have already completed this headline. Please try a different HIT.";
-       document.getElementById("edited-headline").textContent = "This headline has already been rated by you.";
-       
-       // Hide the form
-       const form = document.querySelector('crowd-form');
-       if (form) form.style.display = 'none';
+     // Get available headlines (not seen by this worker)
+     const availableHeadlines = headlines.map((_, i) => i).filter(i => !completions.includes(i));
+     
+     if (availableHeadlines.length === 0) {
+       // All headlines completed
+       document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
+       document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
        return;
      }
+
+     // Randomly select from available headlines
+     const randomIndex = randInt(availableHeadlines.length);
+     const selectedId = availableHeadlines[randomIndex];
 
      // Record this completion
      completions.push(selectedId);
