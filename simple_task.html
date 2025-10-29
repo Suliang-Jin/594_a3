@@ -141,33 +141,29 @@
    function loadHeadline() {
      const workerId = getMTurkParam('workerId');
 
-     // PREVIEW MODE
-     if (!workerId) {
-       document.getElementById("orig-headline").textContent = "The headline will be generated after the HIT is accepted.";
-       document.getElementById("edited-headline").textContent = "The edited headline will be generated after the HIT is accepted.";
-       return;
-     }
-
-     // AFTER ACCEPTANCE - Randomly select a headline
+     // Randomly select a headline (same for preview and after acceptance)
      const selectedId = randInt(headlines.length);
      const h = headlines[selectedId];
      
+     // Always show the actual headlines
      document.getElementById("orig-headline").innerHTML = h.original;
      document.getElementById("edited-headline").innerHTML = h.edited;
 
-     // Hidden fields for export
-     const form = document.querySelector('crowd-form');
-     const hid1 = document.createElement('input');
-     hid1.type = 'hidden';
-     hid1.name = 'worker_id';
-     hid1.value = workerId;
-     form.appendChild(hid1);
+     // Only add hidden fields if worker has accepted the HIT
+     if (workerId) {
+       const form = document.querySelector('crowd-form');
+       const hid1 = document.createElement('input');
+       hid1.type = 'hidden';
+       hid1.name = 'worker_id';
+       hid1.value = workerId;
+       form.appendChild(hid1);
 
-     const hid2 = document.createElement('input');
-     hid2.type = 'hidden';
-     hid2.name = 'headline_id';
-     hid2.value = selectedId;
-     form.appendChild(hid2);
+       const hid2 = document.createElement('input');
+       hid2.type = 'hidden';
+       hid2.name = 'headline_id';
+       hid2.value = selectedId;
+       form.appendChild(hid2);
+     }
    }
 
   window.onload = loadHeadline;
