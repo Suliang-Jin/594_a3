@@ -139,6 +139,24 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
+  // Track worker progress
+  if (workerId !== 'preview') {
+    const progressKey = `worker_progress_${workerId}`;
+    let completedHITs = JSON.parse(localStorage.getItem(progressKey) || '[]');
+    
+    // Add this HIT to completed list if not already there
+    if (!completedHITs.includes(headlineId)) {
+      completedHITs.push(headlineId);
+      localStorage.setItem(progressKey, JSON.stringify(completedHITs));
+    }
+    
+    // Show progress
+    const progressDiv = document.createElement('div');
+    progressDiv.style.cssText = 'background: #e8f5e8; padding: 15px; margin: 15px 0; border-radius: 8px; text-align: center; font-weight: bold; font-size: 16px;';
+    progressDiv.innerHTML = `📊 Your Progress: ${completedHITs.length}/5 HITs completed`;
+    document.querySelector('.container').insertBefore(progressDiv, document.querySelector('crowd-form'));
+  }
+
   // Add hidden fields
   const form = document.querySelector('crowd-form');
   form.innerHTML += `<input type="hidden" name="worker_id" value="${workerId}">`;
