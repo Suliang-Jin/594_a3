@@ -141,7 +141,8 @@
 
   // Track worker progress
   if (workerId !== 'preview') {
-    const progressKey = `worker_progress_${workerId}`;
+    const version = '0'
+    const progressKey = `worker_progress_${workerId}_${version}`;
     let completedHITs = JSON.parse(localStorage.getItem(progressKey) || '[]');
     
     // Add this HIT to completed list if not already there
