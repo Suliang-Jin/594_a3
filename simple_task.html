@@ -151,7 +151,7 @@
     }
     
     // Check if worker has completed 3 HITs
-    if (completedHITs.length >= 3) {
+    if (completedHITs.length > 3) {
       // Hide the form and show completion message
       const form = document.querySelector('crowd-form');
       form.style.display = 'none';
