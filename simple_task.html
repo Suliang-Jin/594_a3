@@ -139,9 +139,10 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
+  const version = '2';
+
   // Track worker progress and enforce a limit of 3 HITs per worker
   if (workerId !== 'preview') {
-    const version = '1';
     const progressKey = `worker_progress_${workerId}_${version}`;
     let completedHITs = JSON.parse(localStorage.getItem(progressKey) || '[]');
 
@@ -172,7 +173,6 @@
   // On submit, record completion for this headline for the worker
   if (workerId !== 'preview') {
     form.addEventListener('submit', () => {
-      const version = '1';
       const progressKey = `worker_progress_${workerId}_${version}`;
       let completedHITs = JSON.parse(localStorage.getItem(progressKey) || '[]');
       if (!completedHITs.includes(headlineId)) {
