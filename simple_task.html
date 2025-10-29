@@ -124,8 +124,8 @@
     {"original": "WHO calls for elimination of <em>trans fat</em> by 2023", "edited": "WHO calls for monetization of trans fat by 2023"},
     {"original": "NASA discovers new planet outside solar <em>system</em>", "edited": "NASA discovers new PR intern outside solar system"},
     {"original": "Economists predict strong growth next quarter", "edited": "Economists predict groan next quarter"},
-    // {"original": "Man wins lottery for second time this year", "edited": "Man wins existential crisis for second time this year"},
-    // {"original": "Cats take over city hall during council meeting", "edited": "Cats take over city mall during council meeting"}
+    {"original": "Man wins lottery for second time this year", "edited": "Man wins existential crisis for second time this year"},
+    {"original": "Cats take over city hall during council meeting", "edited": "Cats take over city mall during council meeting"}
   ];
 
   // Utility: get MTurk param
@@ -137,55 +137,89 @@
   // Utility: pick random integer
   function randInt(max) { return Math.floor(Math.random() * max); }
 
-  // Main logic
-  function loadHeadline() {
-    const workerId = getMTurkParam('workerId');
+   // Main logic
+   function loadHeadline() {
+     const workerId = getMTurkParam('workerId');
+     const headlineId = getMTurkParam('headline_id'); // Get headline ID from URL
 
-    // PREVIEW MODE
-    if (!workerId) {
-      document.getElementById("orig-headline").textContent = "The headline will be generated after the HIT is accepted.";
-      document.getElementById("edited-headline").textContent = "The edited headline will be generated after the HIT is accepted.";
-      return;
-    }
+     // PREVIEW MODE
+     if (!workerId) {
+       document.getElementById("orig-headline").textContent = "The headline will be generated after the HIT is accepted.";
+       document.getElementById("edited-headline").textContent = "The edited headline will be generated after the HIT is accepted.";
+       return;
+     }
 
-    // AFTER ACCEPTANCE
-    const storageKey = `seen_headlines_${workerId}`;
-    let seen = JSON.parse(localStorage.getItem(storageKey) || "[]");
+     // AFTER ACCEPTANCE
+     const completionKey = `worker_completions_${workerId}`;
+     let completions = JSON.parse(localStorage.getItem(completionKey) || "[]");
+     
+     // Check if worker has already completed 3 HITs
+     if (completions.length >= 3) {
+       document.getElementById("orig-headline").textContent = "🎉 Thank you! You have completed all 3 HITs available to you.";
+       document.getElementById("edited-headline").textContent = "Please do not accept any more HITs from this batch.";
+       
+       // Hide the form
+       const form = document.querySelector('crowd-form');
+       if (form) form.style.display = 'none';
+       return;
+     }
 
-    // Compute available headline IDs
-    const availableIds = headlines.map((_, i) => i).filter(i => !seen.includes(i));
+     // Get the specific headline for this HIT
+     let selectedId;
+     if (headlineId && !isNaN(headlineId)) {
+       selectedId = parseInt(headlineId);
+       if (selectedId < 0 || selectedId >= headlines.length) {
+         selectedId = randInt(headlines.length);
+       }
+     } else {
+       selectedId = randInt(headlines.length);
+     }
 
-    let selectedId;
-    if (availableIds.length === 0) {
-      // All used → start reusing or fallback
-      selectedId = randInt(headlines.length);
-      console.warn("All headlines used for this worker; reusing one.");
-    } else {
-      selectedId = availableIds[randInt(availableIds.length)];
-    }
+     // Check if worker has already seen this specific headline
+     if (completions.includes(selectedId)) {
+       document.getElementById("orig-headline").textContent = "You have already completed this headline. Please try a different HIT.";
+       document.getElementById("edited-headline").textContent = "This headline has already been rated by you.";
+       
+       // Hide the form
+       const form = document.querySelector('crowd-form');
+       if (form) form.style.display = 'none';
+       return;
+     }
 
-    // Record that this headline is now seen
-    seen.push(selectedId);
-    localStorage.setItem(storageKey, JSON.stringify(seen));
+     // Record this completion
+     completions.push(selectedId);
+     localStorage.setItem(completionKey, JSON.stringify(completions));
 
-    const h = headlines[selectedId];
-    document.getElementById("orig-headline").innerHTML = h.original;
-    document.getElementById("edited-headline").innerHTML = h.edited;
+     const h = headlines[selectedId];
+     document.getElementById("orig-headline").innerHTML = h.original;
+     document.getElementById("edited-headline").innerHTML = h.edited;
 
-    // Hidden fields for export
-    const form = document.querySelector('crowd-form');
-    const hid1 = document.createElement('input');
-    hid1.type = 'hidden';
-    hid1.name = 'worker_id';
-    hid1.value = workerId;
-    form.appendChild(hid1);
+     // Show completion progress
+     const progressDiv = document.createElement('div');
+     progressDiv.style.cssText = 'background: #e8f5e8; padding: 10px; margin: 10px 0; border-radius: 5px; text-align: center;';
+     progressDiv.innerHTML = `📊 Progress: ${completions.length}/3 HITs completed`;
+     document.querySelector('.container').insertBefore(progressDiv, document.querySelector('crowd-form'));
 
-    const hid2 = document.createElement('input');
-    hid2.type = 'hidden';
-    hid2.name = 'headline_id';
-    hid2.value = selectedId;
-    form.appendChild(hid2);
-  }
+     // Hidden fields for export
+     const form = document.querySelector('crowd-form');
+     const hid1 = document.createElement('input');
+     hid1.type = 'hidden';
+     hid1.name = 'worker_id';
+     hid1.value = workerId;
+     form.appendChild(hid1);
+
+     const hid2 = document.createElement('input');
+     hid2.type = 'hidden';
+     hid2.name = 'headline_id';
+     hid2.value = selectedId;
+     form.appendChild(hid2);
+
+     const hid3 = document.createElement('input');
+     hid3.type = 'hidden';
+     hid3.name = 'completion_count';
+     hid3.value = completions.length;
+     form.appendChild(hid3);
+   }
 
   window.onload = loadHeadline;
   </script>
