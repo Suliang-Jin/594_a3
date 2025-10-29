@@ -139,29 +139,48 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
-  // Track worker progress
+  // Track worker progress and enforce a limit of 3 HITs per worker
   if (workerId !== 'preview') {
-    const version = '0'
+    const version = '1';
     const progressKey = `worker_progress_${workerId}_${version}`;
     let completedHITs = JSON.parse(localStorage.getItem(progressKey) || '[]');
-    
-    // Add this HIT to completed list if not already there
-    if (!completedHITs.includes(headlineId)) {
-      completedHITs.push(headlineId);
-      localStorage.setItem(progressKey, JSON.stringify(completedHITs));
+
+    // If the worker has already completed 3 or more HITs, block further work
+    if (completedHITs.length >= 3) {
+      const blockDiv = document.createElement('div');
+      blockDiv.style.cssText = 'background: #fff3cd; color: #664d03; padding: 16px; margin: 16px 0; border-radius: 8px; border: 1px solid #ffecb5; text-align: center; font-size: 16px;';
+      blockDiv.innerHTML = '✅ You have already completed 3 HITs for this task. Please return/exit this HIT. Thank you!';
+      document.querySelector('.container').insertBefore(blockDiv, document.querySelector('crowd-form'));
+
+      // Hide the form to prevent additional submissions
+      const formEl = document.querySelector('crowd-form');
+      if (formEl) formEl.style.display = 'none';
+    } else {
+      // Show progress (out of 3)
+      const progressDiv = document.createElement('div');
+      progressDiv.style.cssText = 'background: #e8f5e8; padding: 15px; margin: 15px 0; border-radius: 8px; text-align: center; font-weight: bold; font-size: 16px;';
+      progressDiv.innerHTML = `📊 Your Progress: ${completedHITs.length}/3 HITs completed`;
+      document.querySelector('.container').insertBefore(progressDiv, document.querySelector('crowd-form'));
     }
-    
-    // Show progress
-    const progressDiv = document.createElement('div');
-    progressDiv.style.cssText = 'background: #e8f5e8; padding: 15px; margin: 15px 0; border-radius: 8px; text-align: center; font-weight: bold; font-size: 16px;';
-    progressDiv.innerHTML = `📊 Your Progress: ${completedHITs.length}/5 HITs completed`;
-    document.querySelector('.container').insertBefore(progressDiv, document.querySelector('crowd-form'));
   }
 
   // Add hidden fields
   const form = document.querySelector('crowd-form');
   form.innerHTML += `<input type="hidden" name="worker_id" value="${workerId}">`;
   form.innerHTML += `<input type="hidden" name="headline_id" value="${headlineId}">`;
+
+  // On submit, record completion for this headline for the worker
+  if (workerId !== 'preview') {
+    form.addEventListener('submit', () => {
+      const version = '1';
+      const progressKey = `worker_progress_${workerId}_${version}`;
+      let completedHITs = JSON.parse(localStorage.getItem(progressKey) || '[]');
+      if (!completedHITs.includes(headlineId)) {
+        completedHITs.push(headlineId);
+        localStorage.setItem(progressKey, JSON.stringify(completedHITs));
+      }
+    });
+  }
   </script>
 </body>
 </html>
