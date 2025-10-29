@@ -128,45 +128,21 @@
     {"original": "Cats take over city hall during council meeting", "edited": "Cats take over city mall during council meeting"}
   ];
 
-  // Utility: get MTurk param
-  function getMTurkParam(name) {
-    const url = new URL(window.location.href);
-    return url.searchParams.get(name);
-  }
+  // Get headline ID from URL and load headlines
+  const url = new URL(window.location.href);
+  const headlineId = parseInt(url.searchParams.get('headline_id')) || 0;
+  const workerId = url.searchParams.get('workerId') || 'preview';
+  
+  const h = headlines[headlineId] || headlines[0];
+  
+  // Show headlines
+  document.getElementById("orig-headline").innerHTML = h.original;
+  document.getElementById("edited-headline").innerHTML = h.edited;
 
-  // Utility: pick random integer
-  function randInt(max) { return Math.floor(Math.random() * max); }
-
-   // Main logic
-   function loadHeadline() {
-     const workerId = getMTurkParam('workerId');
-
-     // Randomly select a headline (same for preview and after acceptance)
-     const selectedId = randInt(headlines.length);
-     const h = headlines[selectedId];
-     
-     // Always show the actual headlines
-     document.getElementById("orig-headline").innerHTML = h.original;
-     document.getElementById("edited-headline").innerHTML = h.edited;
-
-     // Only add hidden fields if worker has accepted the HIT
-     if (workerId) {
-       const form = document.querySelector('crowd-form');
-       const hid1 = document.createElement('input');
-       hid1.type = 'hidden';
-       hid1.name = 'worker_id';
-       hid1.value = workerId;
-       form.appendChild(hid1);
-
-       const hid2 = document.createElement('input');
-       hid2.type = 'hidden';
-       hid2.name = 'headline_id';
-       hid2.value = selectedId;
-       form.appendChild(hid2);
-     }
-   }
-
-  window.onload = loadHeadline;
+  // Add hidden fields
+  const form = document.querySelector('crowd-form');
+  form.innerHTML += `<input type="hidden" name="worker_id" value="${workerId}">`;
+  form.innerHTML += `<input type="hidden" name="headline_id" value="${headlineId}">`;
   </script>
 </body>
 </html>
