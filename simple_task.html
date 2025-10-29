@@ -148,48 +148,12 @@
        return;
      }
 
-     // AFTER ACCEPTANCE
-     const completionKey = `worker_completions_${workerId}`;
-     let completions = JSON.parse(localStorage.getItem(completionKey) || "[]");
-     
-     // Check if worker has already completed 3 HITs
-     if (completions.length >= 3) {
-       document.getElementById("orig-headline").textContent = "🎉 Thank you! You have completed all 3 HITs available to you.";
-       document.getElementById("edited-headline").textContent = "Please do not accept any more HITs from this batch.";
-       
-       // Hide the form
-       const form = document.querySelector('crowd-form');
-       if (form) form.style.display = 'none';
-       return;
-     }
-
-     // Get available headlines (not seen by this worker)
-     const availableHeadlines = headlines.map((_, i) => i).filter(i => !completions.includes(i));
-     
-     if (availableHeadlines.length === 0) {
-       // All headlines completed
-       document.getElementById("orig-headline").textContent = "🎉 You have completed all available headlines! Thank you for your participation.";
-       document.getElementById("edited-headline").textContent = "Please submit this HIT to complete your work.";
-       return;
-     }
-
-     // Randomly select from available headlines
-     const randomIndex = randInt(availableHeadlines.length);
-     const selectedId = availableHeadlines[randomIndex];
-
-     // Record this completion
-     completions.push(selectedId);
-     localStorage.setItem(completionKey, JSON.stringify(completions));
-
+     // AFTER ACCEPTANCE - Randomly select a headline
+     const selectedId = randInt(headlines.length);
      const h = headlines[selectedId];
+     
      document.getElementById("orig-headline").innerHTML = h.original;
      document.getElementById("edited-headline").innerHTML = h.edited;
-
-     // Show completion progress
-     const progressDiv = document.createElement('div');
-     progressDiv.style.cssText = 'background: #e8f5e8; padding: 10px; margin: 10px 0; border-radius: 5px; text-align: center;';
-     progressDiv.innerHTML = `📊 Progress: ${completions.length}/3 HITs completed`;
-     document.querySelector('.container').insertBefore(progressDiv, document.querySelector('crowd-form'));
 
      // Hidden fields for export
      const form = document.querySelector('crowd-form');
@@ -204,12 +168,6 @@
      hid2.name = 'headline_id';
      hid2.value = selectedId;
      form.appendChild(hid2);
-
-     const hid3 = document.createElement('input');
-     hid3.type = 'hidden';
-     hid3.name = 'completion_count';
-     hid3.value = completions.length;
-     form.appendChild(hid3);
    }
 
   window.onload = loadHeadline;
