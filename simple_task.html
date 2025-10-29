@@ -150,11 +150,30 @@
       localStorage.setItem(progressKey, JSON.stringify(completedHITs));
     }
     
-    // Show progress
-    const progressDiv = document.createElement('div');
-    progressDiv.style.cssText = 'background: #e8f5e8; padding: 15px; margin: 15px 0; border-radius: 8px; text-align: center; font-weight: bold; font-size: 16px;';
-    progressDiv.innerHTML = `📊 Your Progress: ${completedHITs.length}/5 HITs completed`;
-    document.querySelector('.container').insertBefore(progressDiv, document.querySelector('crowd-form'));
+    // Check if worker has completed 3 HITs
+    if (completedHITs.length >= 3) {
+      // Hide the form and show completion message
+      const form = document.querySelector('crowd-form');
+      form.style.display = 'none';
+      
+      const completionDiv = document.createElement('div');
+      completionDiv.style.cssText = 'background: #d4edda; padding: 30px; margin: 20px 0; border-radius: 10px; text-align: center; border: 2px solid #c3e6cb;';
+      completionDiv.innerHTML = `
+        <h2 style="color: #155724; margin-top: 0;">🎉 Task Complete!</h2>
+        <p style="font-size: 18px; color: #155724; margin: 15px 0;">You have successfully completed 3 HITs. Thank you for your participation!</p>
+        <p style="font-size: 16px; color: #155724; margin: 10px 0;">You may now close this window and return to the HIT listing page.</p>
+        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #28a745;">
+          <strong>📊 Your Final Progress:</strong> ${completedHITs.length}/3 HITs completed
+        </div>
+      `;
+      document.querySelector('.container').insertBefore(completionDiv, document.querySelector('crowd-form'));
+    } else {
+      // Show progress for workers who haven't completed 3 HITs yet
+      const progressDiv = document.createElement('div');
+      progressDiv.style.cssText = 'background: #e8f5e8; padding: 15px; margin: 15px 0; border-radius: 8px; text-align: center; font-weight: bold; font-size: 16px;';
+      progressDiv.innerHTML = `📊 Your Progress: ${completedHITs.length}/3 HITs completed`;
+      document.querySelector('.container').insertBefore(progressDiv, document.querySelector('crowd-form'));
+    }
   }
 
   // Add hidden fields
