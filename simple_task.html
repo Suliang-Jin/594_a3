@@ -121,11 +121,11 @@
   <script>
   // ==================== Embedded dataset ====================
   const headlines = [
-    {"original": "WHO calls for elimination of <span style=\"color: blue;\">trans fat</span> by 2023", "edited": "WHO calls for monetization of trans fat by 2023"},
+    {"original": "WHO calls for elimination of <span style=\"color: blue;\">trans</span> fat by 2023", "edited": "WHO calls for monetization of trans fat by 2023"},
     {"original": "NASA discovers new planet outside solar <span style=\"color: blue;\">system</span>", "edited": "NASA discovers new PR intern outside solar system"},
-    {"original": "Economists predict strong growth <span style=\"color: blue;\">next quarter</span>", "edited": "Economists predict groan next quarter"},
-    {"original": "Man wins lottery for second <span style=\"color: blue;\">time</span> this year", "edited": "Man wins existential crisis for second time this year"},
-    {"original": "Cats take over city hall during <span style=\"color: blue;\">council</span> meeting", "edited": "Cats take over city mall during council meeting"}
+    {"original": "Economists predict strong growth <span style=\"color: blue;\">next</span> quarter", "edited": "Economists predict groan next quarter"},
+    {"original": "Man wins lottery for second time <span style=\"color: blue;\">this</span> year", "edited": "Man wins existential crisis for second time this year"},
+    {"original": "Cats take over city hall during council <span style=\"color: blue;\">meeting</span>", "edited": "Cats take over city mall during council meeting"}
   ];
 
   // Get headline ID from URL and load headlines
@@ -139,7 +139,7 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
-  const version = '7';
+  const version = '9';
 
   // Track worker progress and enforce a limit of 3 HITs per worker
   if (workerId !== 'preview') {
