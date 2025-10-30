@@ -144,7 +144,7 @@
 
   <script>
   // ==================== Embedded dataset ====================
-  const all_headlines = [
+  const headlines = [
     {
         "original": " <span style=\"color: blue;\">Avalanches</span> in Afghanistan kill at least 54",
         "edited": " <span style=\"color: blue;\">Martians</span> in Afghanistan kill at least 54"
@@ -185,768 +185,768 @@
         "original": "Oregon man dies ' peacefully ' after told <span style=\"color: blue;\">Trump</span> 's been impeached",
         "edited": "Oregon man dies ' peacefully ' after told <span style=\"color: blue;\">wife</span> 's been impeached"
     },
-    {
-        "original": "Schwarzenegger launches new effort to <span style=\"color: blue;\">counter</span> Trump on climate",
-        "edited": "Schwarzenegger launches new effort to <span style=\"color: blue;\">destroy</span> Trump on climate"
-    },
-    {
-        "original": "Fla . Gov. Rick Scott expected in Washington to <span style=\"color: blue;\">raise</span> money for widely anticipated Senate run",
-        "edited": "Fla . Gov. Rick Scott expected in Washington to <span style=\"color: blue;\">waste</span> money for widely anticipated Senate run"
-    },
-    {
-        "original": " <span style=\"color: blue;\">Affirmative Action</span> : Now More Than Ever",
-        "edited": " <span style=\"color: blue;\">Booze</span> : Now More Than Ever"
-    },
-    {
-        "original": "North Korean <span style=\"color: blue;\">Official</span> : Situation in a ' Vicious Cycle '",
-        "edited": "North Korean <span style=\"color: blue;\">drier</span> : Situation in a ' Vicious Cycle '"
-    },
-    {
-        "original": "Trump Paid About $ 38 Million In Federal <span style=\"color: blue;\">Taxes</span> In 2005 , Leaked Returns Say",
-        "edited": "Trump Paid About $ 38 Million In Federal <span style=\"color: blue;\">Bribes</span> In 2005 , Leaked Returns Say"
-    },
-    {
-        "original": "Moscow storm : 11 killed as high <span style=\"color: blue;\">winds</span> strike Russian capital",
-        "edited": "Moscow storm : 11 killed as high <span style=\"color: blue;\">stoners</span> strike Russian capital"
-    },
-    {
-        "original": "Eyeing an election , Austria 's far-right <span style=\"color: blue;\">Freedom Party</span> commits to EU",
-        "edited": "Eyeing an election , Austria 's far-right <span style=\"color: blue;\">gecko</span> commits to EU"
-    },
-    {
-        "original": "Bernie Sanders ' <span style=\"color: blue;\">Son</span> Is Extremely Mad Online",
-        "edited": "Bernie Sanders ' <span style=\"color: blue;\">Grandmother</span> Is Extremely Mad Online"
-    },
-    {
-        "original": "Trump \u2019s Rhetoric Helpless Against Rise of <span style=\"color: blue;\">Trade</span> Deficit With China",
-        "edited": "Trump \u2019s Rhetoric Helpless Against Rise of <span style=\"color: blue;\">cheese</span> Deficit With China"
-    },
-    {
-        "original": "' Matilda ' film on last czar 's <span style=\"color: blue;\">affair</span> , sparks controversy in Russia",
-        "edited": "' Matilda ' film on last czar 's <span style=\"color: blue;\">nose</span> , sparks controversy in Russia"
-    },
-    {
-        "original": "Theresa May : \u2018 Highly Likely \u2019 Russia Is Responsible for <span style=\"color: blue;\">Poisoning</span> Former Spy",
-        "edited": "Theresa May : \u2018 Highly Likely \u2019 Russia Is Responsible for <span style=\"color: blue;\">teasing</span> Former Spy"
-    },
-    {
-        "original": "Fox Keeps Urging Trump To <span style=\"color: blue;\">Fire</span> Mueller",
-        "edited": "Fox Keeps Urging Trump To <span style=\"color: blue;\">palpate</span> Mueller"
-    },
-    {
-        "original": "Just One GOP Senator Voted To Block Legislation Cutting Social Security , Medicare And <span style=\"color: blue;\">Medicaid</span> ",
-        "edited": "Just One GOP Senator Voted To Block Legislation Cutting Social Security , Medicare And <span style=\"color: blue;\">bingo</span> "
-    },
-    {
-        "original": "Justice Dept. Report Is Expected to <span style=\"color: blue;\">Criticize</span> Andrew McCabe Over Media Disclosures",
-        "edited": "Justice Dept. Report Is Expected to <span style=\"color: blue;\">pity</span> Andrew McCabe Over Media Disclosures"
-    },
-    {
-        "original": "Tillerson <span style=\"color: blue;\">faces</span> his toughest audience yet : The State Department",
-        "edited": "Tillerson <span style=\"color: blue;\">mocks</span> his toughest audience yet : The State Department"
-    },
-    {
-        "original": "US <span style=\"color: blue;\">health</span> secretary Tom Price quits",
-        "edited": "US <span style=\"color: blue;\">cheese</span> secretary Tom Price quits"
-    },
-    {
-        "original": "The Trump effect : New study connects white American <span style=\"color: blue;\">intolerance</span> and support for authoritarianism",
-        "edited": "The Trump effect : New study connects white American <span style=\"color: blue;\">cheese</span> and support for authoritarianism"
-    },
-    {
-        "original": "Equifax Says Cyberattack May Have Affected 143 Million <span style=\"color: blue;\">Customers</span> ",
-        "edited": "Equifax Says Cyberattack May Have Affected 143 Million <span style=\"color: blue;\">burglars</span> "
-    },
-    {
-        "original": "Trump may give in on China <span style=\"color: blue;\">trade</span> to get North Korea \u2019s Kim Jong Un , says former ambassador",
-        "edited": "Trump may give in on China <span style=\"color: blue;\">patterns</span> to get North Korea \u2019s Kim Jong Un , says former ambassador"
-    },
-    {
-        "original": "The Shallow State \u2019s Need for Attention Is Destroying Trump \u2019s <span style=\"color: blue;\">White</span> House",
-        "edited": "The Shallow State \u2019s Need for Attention Is Destroying Trump \u2019s <span style=\"color: blue;\">dog</span> House"
-    },
-    {
-        "original": "Barred from China and silenced in the US , this beauty <span style=\"color: blue;\">queen</span> is n't backing down",
-        "edited": "Barred from China and silenced in the US , this beauty <span style=\"color: blue;\">mattress</span> is n't backing down"
-    },
-    {
-        "original": "House Intel <span style=\"color: blue;\">Republicans</span> Have Cleared Trump . So Are The Russia Investigations Over ?",
-        "edited": "House Intel <span style=\"color: blue;\">Defectives</span> Have Cleared Trump . So Are The Russia Investigations Over ?"
-    },
-    {
-        "original": "Donald Trump : Democrats Want Government Shutdown for <span style=\"color: blue;\">Christmas</span> ",
-        "edited": "Donald Trump : Democrats Want Government Shutdown for <span style=\"color: blue;\">date</span> "
-    },
-    {
-        "original": "Dozens of migrants die of <span style=\"color: blue;\">thirst</span> while crossing desert in Niger",
-        "edited": "Dozens of migrants die of <span style=\"color: blue;\">boredom</span> while crossing desert in Niger"
-    },
-    {
-        "original": "Trump Once Again Invites Questions And Doubts About His <span style=\"color: blue;\">Stability</span> ",
-        "edited": "Trump Once Again Invites Questions And Doubts About His <span style=\"color: blue;\">hairdresser</span> "
-    },
-    {
-        "original": " <span style=\"color: blue;\">Russia</span> says will not offer to host Trump meeting with North Korea 's Kim : RIA",
-        "edited": " <span style=\"color: blue;\">Building</span> says will not offer to host Trump meeting with North Korea 's Kim : RIA"
-    },
-    {
-        "original": "Trump : U.S. has ' no choice ' but to deal with North Korea <span style=\"color: blue;\">arms</span> challenge",
-        "edited": "Trump : U.S. has ' no choice ' but to deal with North Korea <span style=\"color: blue;\">kimchi</span> challenge"
-    },
-    {
-        "original": "4 arrested in Sydney raids to stop terrorist <span style=\"color: blue;\">attack</span> ",
-        "edited": "4 arrested in Sydney raids to stop terrorist <span style=\"color: blue;\">kangaroo</span> "
-    },
-    {
-        "original": "Trump Says He Passed On Being ' <span style=\"color: blue;\">Person</span> Of The Year . ' ' Time ' Says He 's ' Incorrect '",
-        "edited": "Trump Says He Passed On Being ' <span style=\"color: blue;\">puppet</span> Of The Year . ' ' Time ' Says He 's ' Incorrect '"
-    },
-    {
-        "original": "Is There Method in Donald Trump \u2019s <span style=\"color: blue;\">Madness</span> ?",
-        "edited": "Is There Method in Donald Trump \u2019s <span style=\"color: blue;\">acting</span> ?"
-    },
-    {
-        "original": "Democratic leadership was quick to slam the GOP 's <span style=\"color: blue;\">tax</span> plan",
-        "edited": "Democratic leadership was quick to slam the GOP 's <span style=\"color: blue;\">breakfast</span> plan"
-    },
-    {
-        "original": "Putin tells Americans to stop disrespecting Trump , because he 's the <span style=\"color: blue;\">president</span> ",
-        "edited": "Putin tells Americans to stop disrespecting Trump , because he 's the <span style=\"color: blue;\">best</span> "
-    },
-    {
-        "original": "China conducts live fire <span style=\"color: blue;\">combat</span> drills in East China Sea : Xinhua",
-        "edited": "China conducts live fire <span style=\"color: blue;\">lighting</span> drills in East China Sea : Xinhua"
-    },
-    {
-        "original": " <span style=\"color: blue;\">Oil</span> Halts Slide Near $ 47 as U.S. Stockpiles Seen Extending Drop",
-        "edited": " <span style=\"color: blue;\">Mud</span> Halts Slide Near $ 47 as U.S. Stockpiles Seen Extending Drop"
-    },
-    {
-        "original": "Obama Criticizes Trumps Immigration Ban , Is ' Heartened ' By <span style=\"color: blue;\">Protests</span> ",
-        "edited": "Obama Criticizes Trumps Immigration Ban , Is ' Heartened ' By <span style=\"color: blue;\">cookies</span> "
-    },
-    {
-        "original": "CBS Poll : Americans lack confidence in Trump 's ability to handle <span style=\"color: blue;\">North Korea</span> ",
-        "edited": "CBS Poll : Americans lack confidence in Trump 's ability to handle <span style=\"color: blue;\">spaghetti</span> "
-    },
-    {
-        "original": "U.S. judge loosens \" travel ban \" restrictions to exempt <span style=\"color: blue;\">grandparents</span> , other family",
-        "edited": "U.S. judge loosens \" travel ban \" restrictions to exempt <span style=\"color: blue;\">rattlesnakes</span> , other family"
-    },
-    {
-        "original": "Omarosa on ' Big Brother ' : U.S. wo n't be ' OK ' under <span style=\"color: blue;\">Trump</span> ",
-        "edited": "Omarosa on ' Big Brother ' : U.S. wo n't be ' OK ' under <span style=\"color: blue;\">me</span> "
-    },
-    {
-        "original": "Mattis to brief Trump on <span style=\"color: blue;\">options</span> for military action in Syria",
-        "edited": "Mattis to brief Trump on <span style=\"color: blue;\">undergarments</span> for military action in Syria"
-    },
-    {
-        "original": "Mexican bank intervenes after woman , 116 , deemed ' too old ' for <span style=\"color: blue;\">card</span> ",
-        "edited": "Mexican bank intervenes after woman , 116 , deemed ' too old ' for <span style=\"color: blue;\">birthday</span> "
-    },
-    {
-        "original": "North Korean Official : <span style=\"color: blue;\">Situation</span> in a ' Vicious Cycle '",
-        "edited": "North Korean Official : <span style=\"color: blue;\">Laundry</span> in a ' Vicious Cycle '"
-    },
-    {
-        "original": "California governor scans wildfire damage and <span style=\"color: blue;\">blasts</span> Trump for Paris climate pullout",
-        "edited": "California governor scans wildfire damage and <span style=\"color: blue;\">strangles</span> Trump for Paris climate pullout"
-    },
-    {
-        "original": "Senate Judiciary Committee : Kushner forwarded emails about ' a Russian backdoor overture and <span style=\"color: blue;\">dinner</span> invite '",
-        "edited": "Senate Judiciary Committee : Kushner forwarded emails about ' a Russian backdoor overture and <span style=\"color: blue;\">date</span> invite '"
-    },
-    {
-        "original": "Putin ' is <span style=\"color: blue;\">lying</span> ' by denying Russian interference in US election , Susan Rice says",
-        "edited": "Putin ' is <span style=\"color: blue;\">helping</span> ' by denying Russian interference in US election , Susan Rice says"
-    },
-    {
-        "original": "Forget Atlantis : ' Lost continent ' found under <span style=\"color: blue;\">Indian Ocean</span> ",
-        "edited": "Forget Atlantis : ' Lost continent ' found under <span style=\"color: blue;\">rock</span> "
-    },
-    {
-        "original": "Report : Broward County Grew Increasingly Unsafe as Obama-Era Discipline Policies Protected <span style=\"color: blue;\">Minority</span> Students",
-        "edited": "Report : Broward County Grew Increasingly Unsafe as Obama-Era Discipline Policies Protected <span style=\"color: blue;\">art</span> Students"
-    },
-    {
-        "original": "Trump says <span style=\"color: blue;\">Venezuela</span> 's ' a mess '",
-        "edited": "Trump says <span style=\"color: blue;\">bedroom</span> 's ' a mess '"
-    },
-    {
-        "original": "Trump throws cold <span style=\"color: blue;\">water</span> on Roy Moore accuser 's yearbook claim",
-        "edited": "Trump throws cold <span style=\"color: blue;\">puppies</span> on Roy Moore accuser 's yearbook claim"
-    },
-    {
-        "original": "Trump 's Official Portrait Resembles a <span style=\"color: blue;\">Smiley</span> Emoji",
-        "edited": "Trump 's Official Portrait Resembles a <span style=\"color: blue;\">Smelly</span> Emoji"
-    },
-    {
-        "original": "White <span style=\"color: blue;\">House</span> struggles to contain Flynn fallout",
-        "edited": "White <span style=\"color: blue;\">man</span> struggles to contain Flynn fallout"
-    },
-    {
-        "original": "The Latest : CEOs confident in <span style=\"color: blue;\">future</span> , survey finds",
-        "edited": "The Latest : CEOs confident in <span style=\"color: blue;\">fraud</span> , survey finds"
-    },
-    {
-        "original": "Do conservatives feel the same fear and embarrassment as I do over <span style=\"color: blue;\">President Trump</span> ?",
-        "edited": "Do conservatives feel the same fear and embarrassment as I do over <span style=\"color: blue;\">cuddling</span> ?"
-    },
-    {
-        "original": "Trump is abandoning the <span style=\"color: blue;\">climate</span> pact",
-        "edited": "Trump is abandoning the <span style=\"color: blue;\">blood</span> pact"
-    },
-    {
-        "original": "Leigh Corfman on her <span style=\"color: blue;\">encounter</span> with Roy Moore at age 14",
-        "edited": "Leigh Corfman on her <span style=\"color: blue;\">marriage</span> with Roy Moore at age 14"
-    },
-    {
-        "original": "Trump is likely to <span style=\"color: blue;\">announce</span> Jerome Powell as the next Fed chair on Thursday",
-        "edited": "Trump is likely to <span style=\"color: blue;\">repurpose</span> Jerome Powell as the next Fed chair on Thursday"
-    },
-    {
-        "original": "Former Pentagon chief Ash Carter returns to teach at <span style=\"color: blue;\">Harvard</span> ",
-        "edited": "Former Pentagon chief Ash Carter returns to teach at <span style=\"color: blue;\">Preschool</span> "
-    },
-    {
-        "original": "Two large <span style=\"color: blue;\">banks</span> to raise their minimum wage to $ 15 an hour",
-        "edited": "Two large <span style=\"color: blue;\">coffees</span> to raise their minimum wage to $ 15 an hour"
-    },
-    {
-        "original": "This John Brennan quote on Russia just made Donald Trump 's <span style=\"color: blue;\">life</span> much harder",
-        "edited": "This John Brennan quote on Russia just made Donald Trump 's <span style=\"color: blue;\">pants</span> much harder"
-    },
-    {
-        "original": " <span style=\"color: blue;\">Mark Zuckerberg</span> 's net worth plunges $ 5.3 billion on Facebook data controversy",
-        "edited": " <span style=\"color: blue;\">Dog</span> 's net worth plunges $ 5.3 billion on Facebook data controversy"
-    },
-    {
-        "original": "Trump to <span style=\"color: blue;\">decide</span> \u2018 very quickly \u2019 on US pullout from Syria",
-        "edited": "Trump to <span style=\"color: blue;\">tweet</span> \u2018 very quickly \u2019 on US pullout from Syria"
-    },
-    {
-        "original": "Ronny Jackson <span style=\"color: blue;\">withdraws</span> as Trump 's nominee to head the VA",
-        "edited": "Ronny Jackson <span style=\"color: blue;\">divorces</span> as Trump 's nominee to head the VA"
-    },
-    {
-        "original": "On Donald Trump , Republicans should prefer <span style=\"color: blue;\">war</span> to appeasement",
-        "edited": "On Donald Trump , Republicans should prefer <span style=\"color: blue;\">pancakes</span> to appeasement"
-    },
-    {
-        "original": "China Learns How to Get Trump 's <span style=\"color: blue;\">Ear</span> : Through Jared Kushner",
-        "edited": "China Learns How to Get Trump 's <span style=\"color: blue;\">underwear</span> : Through Jared Kushner"
-    },
-    {
-        "original": "French parliamentary elections : Emmanuel Macron 's <span style=\"color: blue;\">party</span> expected to triumph as Front National faces collapse",
-        "edited": "French parliamentary elections : Emmanuel Macron 's <span style=\"color: blue;\">restaurant</span> expected to triumph as Front National faces collapse"
-    },
-    {
-        "original": "Florida school massacre sparks church sign : ' When will they love their kids more than their <span style=\"color: blue;\">guns</span> '",
-        "edited": "Florida school massacre sparks church sign : ' When will they love their kids more than their <span style=\"color: blue;\">televisions</span> '"
-    },
-    {
-        "original": "NFL players union vows Donald Trump <span style=\"color: blue;\">comments</span> will not deter stand on protests , safety",
-        "edited": "NFL players union vows Donald Trump <span style=\"color: blue;\">rantings</span> will not deter stand on protests , safety"
-    },
-    {
-        "original": "Las Vegas , hoping to <span style=\"color: blue;\">stem</span> HIV and hepatitis , to get needle vending machines",
-        "edited": "Las Vegas , hoping to <span style=\"color: blue;\">spread</span> HIV and hepatitis , to get needle vending machines"
-    },
-    {
-        "original": "No , Hillary Clinton did not \" give Russia 20 percent of the <span style=\"color: blue;\">uranium</span> \u201d in the US",
-        "edited": "No , Hillary Clinton did not \" give Russia 20 percent of the <span style=\"color: blue;\">vodka</span> \u201d in the US"
-    },
-    {
-        "original": "Trump , Russian <span style=\"color: blue;\">spies</span> and the infamous \u2018 golden shower memos \u2019",
-        "edited": "Trump , Russian <span style=\"color: blue;\">prostitutes</span> and the infamous \u2018 golden shower memos \u2019"
-    },
-    {
-        "original": "Infowars peddled stories from a Russian <span style=\"color: blue;\">propaganda</span> outlet for years",
-        "edited": "Infowars peddled stories from a Russian <span style=\"color: blue;\">hat</span> outlet for years"
-    },
-    {
-        "original": "Mnuchin 's $ 800K <span style=\"color: blue;\">Travel</span> Bill Approved ; Watchdog Seeks More Rigor",
-        "edited": "Mnuchin 's $ 800K <span style=\"color: blue;\">restaurant</span> Bill Approved ; Watchdog Seeks More Rigor"
-    },
-    {
-        "original": "Trump Travel <span style=\"color: blue;\">Ban</span> Faces Court Hearings By Challengers Today",
-        "edited": "Trump Travel <span style=\"color: blue;\">Comedy</span> Faces Court Hearings By Challengers Today"
-    },
-    {
-        "original": "White House says Trump 's legal team supports a second special counsel to <span style=\"color: blue;\">probe</span> FBI , DOJ",
-        "edited": "White House says Trump 's legal team supports a second special counsel to <span style=\"color: blue;\">eat</span> FBI , DOJ"
-    },
-    {
-        "original": "When asked when the last time he thought America \u2018 was great \u2019 Roy Moore replied with \u2018 <span style=\"color: blue;\">slavery</span> \u2019",
-        "edited": "When asked when the last time he thought America \u2018 was great \u2019 Roy Moore replied with \u2018 <span style=\"color: blue;\">Disco</span> \u2019"
-    },
-    {
-        "original": "CNN Poll : Three-quarters of Americans approve of Trump 's plans to <span style=\"color: blue;\">meet</span> with Kim Jong-Un",
-        "edited": "CNN Poll : Three-quarters of Americans approve of Trump 's plans to <span style=\"color: blue;\">dance</span> with Kim Jong-Un"
-    },
-    {
-        "original": "Hiring surges as economy adds 298,000 private-sector jobs in <span style=\"color: blue;\">February</span> ",
-        "edited": "Hiring surges as economy adds 298,000 private-sector jobs in <span style=\"color: blue;\">zoos</span> "
-    },
-    {
-        "original": "Kushner said CNN should fire a fifth of its <span style=\"color: blue;\">staff</span> over election coverage : report",
-        "edited": "Kushner said CNN should fire a fifth of its <span style=\"color: blue;\">caterers</span> over election coverage : report"
-    },
-    {
-        "original": "Pelosi Strikes Back : ' I Think I 'm Worth the <span style=\"color: blue;\">Trouble</span> '",
-        "edited": "Pelosi Strikes Back : ' I Think I 'm Worth the <span style=\"color: blue;\">Diamond</span> '"
-    },
-    {
-        "original": "Trump \u2019s <span style=\"color: blue;\">Trade</span> War With Canada",
-        "edited": "Trump \u2019s <span style=\"color: blue;\">thumb</span> War With Canada"
-    },
-    {
-        "original": "Inter-Shi ' ite tension mounts in Baghdad after <span style=\"color: blue;\">clashes</span> - six killed",
-        "edited": "Inter-Shi ' ite tension mounts in Baghdad after <span style=\"color: blue;\">hoedown</span> - six killed"
-    },
-    {
-        "original": "Fired Trump aide Michael Flynn ' has a story to <span style=\"color: blue;\">tell</span> ' - BBC News",
-        "edited": "Fired Trump aide Michael Flynn ' has a story to <span style=\"color: blue;\">write</span> ' - BBC News"
-    },
-    {
-        "original": "White House staff to throw Spicer a <span style=\"color: blue;\">farewell</span> party",
-        "edited": "White House staff to throw Spicer a <span style=\"color: blue;\">pizza</span> party"
-    },
-    {
-        "original": "' The Wire ' star : Opioids treated differently from <span style=\"color: blue;\">crack</span> because they affect white people",
-        "edited": "' The Wire ' star : Opioids treated differently from <span style=\"color: blue;\">milk</span> because they affect white people"
-    },
-    {
-        "original": "Photos of the Syria strike appear to show <span style=\"color: blue;\">missile</span> interceptors firing blindly , totally failing to stop missile attack",
-        "edited": "Photos of the Syria strike appear to show <span style=\"color: blue;\">peanut</span> interceptors firing blindly , totally failing to stop missile attack"
-    },
-    {
-        "original": "More Than Half A Million Rohingyas Fled Myanmar In A Single <span style=\"color: blue;\">Month</span> ",
-        "edited": "More Than Half A Million Rohingyas Fled Myanmar In A Single <span style=\"color: blue;\">trip</span> "
-    },
-    {
-        "original": "Donald Trump will spark a <span style=\"color: blue;\">war</span> in the Middle East with Iran \u2013 which is great news for Isis",
-        "edited": "Donald Trump will spark a <span style=\"color: blue;\">romance</span> in the Middle East with Iran \u2013 which is great news for Isis"
-    },
-    {
-        "original": "Karl : <span style=\"color: blue;\">Sources</span> close to president say it may be time for Kushner to take leave of absence",
-        "edited": "Karl : <span style=\"color: blue;\">Zombies</span> close to president say it may be time for Kushner to take leave of absence"
-    },
-    {
-        "original": "Deputy fatally shoots 16-year-old <span style=\"color: blue;\">boy</span> in Ohio courtroom , authorities say",
-        "edited": "Deputy fatally shoots 16-year-old <span style=\"color: blue;\">dog</span> in Ohio courtroom , authorities say"
-    },
-    {
-        "original": "Trump \u2019s fundraising prowess keeps <span style=\"color: blue;\">Republican</span> Party close",
-        "edited": "Trump \u2019s fundraising prowess keeps <span style=\"color: blue;\">birthday</span> Party close"
-    },
-    {
-        "original": "This John Brennan quote on Russia just made Donald Trump 's <span style=\"color: blue;\">life</span> much harder",
-        "edited": "This John Brennan quote on Russia just made Donald Trump 's <span style=\"color: blue;\">palate</span> much harder"
-    },
-    {
-        "original": "Amazon removes Indian flag doormat after minister <span style=\"color: blue;\">threatens</span> visa ban",
-        "edited": "Amazon removes Indian flag doormat after minister <span style=\"color: blue;\">accepts</span> visa ban"
-    },
-    {
-        "original": "How a retired <span style=\"color: blue;\">law</span> professor could reshape U.S. democracy",
-        "edited": "How a retired <span style=\"color: blue;\">Kinesiology</span> professor could reshape U.S. democracy"
-    },
-    {
-        "original": "Appeals Court Panel Appears Skeptical of Trump 's <span style=\"color: blue;\">Travel</span> Ban",
-        "edited": "Appeals Court Panel Appears Skeptical of Trump 's <span style=\"color: blue;\">deodorant</span> Ban"
-    },
-    {
-        "original": "Orange County <span style=\"color: blue;\">Rep. Dana Rohrabacher</span> was lobbied by the former Soviet military intelligence officer at the Trump meeting",
-        "edited": "Orange County <span style=\"color: blue;\">Buffoon</span> was lobbied by the former Soviet military intelligence officer at the Trump meeting"
-    },
-    {
-        "original": "Mattis to brief Trump on options for military action in <span style=\"color: blue;\">Syria</span> ",
-        "edited": "Mattis to brief Trump on options for military action in <span style=\"color: blue;\">garden</span> "
-    },
-    {
-        "original": "S &amp; amp ; amp ;P downgrades China 's <span style=\"color: blue;\">rating</span> , citing increasing economic , financial risks",
-        "edited": "S &amp; amp ; amp ;P downgrades China 's <span style=\"color: blue;\">Takeout</span> , citing increasing economic , financial risks"
-    },
-    {
-        "original": "' Poisoned ' Russian dissident : Trump echoed ' one of the Kremlin 's oldest <span style=\"color: blue;\">propaganda</span> tools '",
-        "edited": "' Poisoned ' Russian dissident : Trump echoed ' one of the Kremlin 's oldest <span style=\"color: blue;\">bike</span> tools '"
-    },
-    {
-        "original": "Gunman Killed After <span style=\"color: blue;\">Mass</span> Shooting at San Diego Pool Party",
-        "edited": "Gunman Killed After <span style=\"color: blue;\">paintball</span> Shooting at San Diego Pool Party"
-    },
-    {
-        "original": "Mattis says Korea <span style=\"color: blue;\">talks</span> ca n\u2019t distract from denuclearization",
-        "edited": "Mattis says Korea <span style=\"color: blue;\">puppies</span> ca n\u2019t distract from denuclearization"
-    },
-    {
-        "original": "German anti-Muslim AfD party politician converts to <span style=\"color: blue;\">Islam</span> ",
-        "edited": "German anti-Muslim AfD party politician converts to <span style=\"color: blue;\">decaf</span> "
-    },
-    {
-        "original": "Trump 's <span style=\"color: blue;\">rhetoric</span> will never unify Americans \u2014 because Trump does n't want to unify Americans",
-        "edited": "Trump 's <span style=\"color: blue;\">hair</span> will never unify Americans \u2014 because Trump does n't want to unify Americans"
-    },
-    {
-        "original": "[ Breaking ] Syrian militias say capture Tabqa City and Dam from <span style=\"color: blue;\">ISIS</span> ",
-        "edited": "[ Breaking ] Syrian militias say capture Tabqa City and Dam from <span style=\"color: blue;\">kittens</span> "
-    },
-    {
-        "original": "As Joe Arpaio waits for <span style=\"color: blue;\">mercy</span> , 5 things to know about presidential pardons .",
-        "edited": "As Joe Arpaio waits for <span style=\"color: blue;\">pizza</span> , 5 things to know about presidential pardons ."
-    },
-    {
-        "original": " <span style=\"color: blue;\">Taylor</span> Impresses Trump for Fed Chairman , Warsh Slips",
-        "edited": " <span style=\"color: blue;\">monkey</span> Impresses Trump for Fed Chairman , Warsh Slips"
-    },
-    {
-        "original": "MAR 12 2018 , 5:23 AM ET Qataris opted not to give info on Kushner , secret <span style=\"color: blue;\">meetings</span> to Mueller",
-        "edited": "MAR 12 2018 , 5:23 AM ET Qataris opted not to give info on Kushner , secret <span style=\"color: blue;\">poems</span> to Mueller"
-    },
-    {
-        "original": "Quebec \u2019s legislators last week unanimously passed a resolution calling for shopkeepers to stop saying \u201c Bonjour hi \u201d when they <span style=\"color: blue;\">greet</span> customers",
-        "edited": "Quebec \u2019s legislators last week unanimously passed a resolution calling for shopkeepers to stop saying \u201c Bonjour hi \u201d when they <span style=\"color: blue;\">kick</span> customers"
-    },
-    {
-        "original": "White House preparing for McMaster <span style=\"color: blue;\">exit</span> as early as next month",
-        "edited": "White House preparing for McMaster <span style=\"color: blue;\">birthday</span> as early as next month"
-    },
-    {
-        "original": "Rubio calls for congressional investigation of nursing <span style=\"color: blue;\">home</span> ",
-        "edited": "Rubio calls for congressional investigation of nursing <span style=\"color: blue;\">cat</span> "
-    },
-    {
-        "original": "Secret <span style=\"color: blue;\">Service</span> likely would n't have intervened in Trump Jr.-Russia meeting",
-        "edited": "Secret <span style=\"color: blue;\">Santa</span> likely would n't have intervened in Trump Jr.-Russia meeting"
-    },
-    {
-        "original": "Facebook flooded with ' sextortion ' and revenge porn , <span style=\"color: blue;\">files</span> reveal",
-        "edited": "Facebook flooded with ' sextortion ' and revenge porn , <span style=\"color: blue;\">comics</span> reveal"
-    },
-    {
-        "original": "Why Trump may be about to decapitate <span style=\"color: blue;\">North Korea</span> : James Robbins",
-        "edited": "Why Trump may be about to decapitate <span style=\"color: blue;\">Beaver</span> : James Robbins"
-    },
-    {
-        "original": "Scotland offers free <span style=\"color: blue;\">abortions</span> to women from Northern Ireland",
-        "edited": "Scotland offers free <span style=\"color: blue;\">babies</span> to women from Northern Ireland"
-    },
-    {
-        "original": "James Corden says he <span style=\"color: blue;\">regrets</span> Spicer kiss",
-        "edited": "James Corden says he <span style=\"color: blue;\">enjoyed</span> Spicer kiss"
-    },
-    {
-        "original": "Sean Hannity has become the media \u2019s top <span style=\"color: blue;\">conspiracy</span> theorist",
-        "edited": "Sean Hannity has become the media \u2019s top <span style=\"color: blue;\">alien</span> theorist"
-    },
-    {
-        "original": "Billionaire Pritzker to Face Incumbent Rauner in <span style=\"color: blue;\">Illinois</span> Race",
-        "edited": "Billionaire Pritzker to Face Incumbent Rauner in <span style=\"color: blue;\">foot</span> Race"
-    },
-    {
-        "original": "Unauthorized and Sick , Some Illegal Immigrants Steer Clear of Medical <span style=\"color: blue;\">Care</span> ",
-        "edited": "Unauthorized and Sick , Some Illegal Immigrants Steer Clear of Medical <span style=\"color: blue;\">Marijuanas</span> "
-    },
-    {
-        "original": "North Korean Official : <span style=\"color: blue;\">Situation</span> in a ' Vicious Cycle '",
-        "edited": "North Korean Official : <span style=\"color: blue;\">Dryer</span> in a ' Vicious Cycle '"
-    },
-    {
-        "original": "Trump \u2019s Plan To Kick Out Mexican <span style=\"color: blue;\">Immigrants</span> Will Absolutely Need Mexican Cooperation",
-        "edited": "Trump \u2019s Plan To Kick Out Mexican <span style=\"color: blue;\">food</span> Will Absolutely Need Mexican Cooperation"
-    },
-    {
-        "original": "South Korean court upholds motion to <span style=\"color: blue;\">impeach</span> President Park Geun-hye",
-        "edited": "South Korean court upholds motion to <span style=\"color: blue;\">kiss</span> President Park Geun-hye"
-    },
-    {
-        "original": "Congress Struggles to Confront Sexual Harassment as <span style=\"color: blue;\">Stories</span> Pile Up",
-        "edited": "Congress Struggles to Confront Sexual Harassment as <span style=\"color: blue;\">homeworks</span> Pile Up"
-    },
-    {
-        "original": "China ' holding at least 120,000 <span style=\"color: blue;\">Uighurs</span> in re-education camps '",
-        "edited": "China ' holding at least 120,000 <span style=\"color: blue;\">Pandas</span> in re-education camps '"
-    },
-    {
-        "original": "The moment a US father hears his dead <span style=\"color: blue;\">daughter</span> 's heartbeat",
-        "edited": "The moment a US father hears his dead <span style=\"color: blue;\">Frog</span> 's heartbeat"
-    },
-    {
-        "original": "As a proud Israeli I want <span style=\"color: blue;\">peace</span> . Killing Gazans wo n\u2019t bring that",
-        "edited": "As a proud Israeli I want <span style=\"color: blue;\">falafel</span> . Killing Gazans wo n\u2019t bring that"
-    },
-    {
-        "original": "The Kremlin says Putin and Trump agreed during <span style=\"color: blue;\">phone</span> call to step up U.S.-Russian diplomatic efforts on Syria .",
-        "edited": "The Kremlin says Putin and Trump agreed during <span style=\"color: blue;\">booty</span> call to step up U.S.-Russian diplomatic efforts on Syria ."
-    },
-    {
-        "original": "Mnuchin 's $ 800K Travel Bill Approved ; <span style=\"color: blue;\">Watchdog</span> Seeks More Rigor",
-        "edited": "Mnuchin 's $ 800K Travel Bill Approved ; <span style=\"color: blue;\">Hamburger</span> Seeks More Rigor"
-    },
-    {
-        "original": "CNN 's Jake Tapper to <span style=\"color: blue;\">interview</span> Paul Ryan following retirement announcement",
-        "edited": "CNN 's Jake Tapper to <span style=\"color: blue;\">wrestle</span> Paul Ryan following retirement announcement"
-    },
-    {
-        "original": "Trump again <span style=\"color: blue;\">undercuts</span> his secretary of State , dashing potential progress on North Korea",
-        "edited": "Trump again <span style=\"color: blue;\">educates</span> his secretary of State , dashing potential progress on North Korea"
-    },
-    {
-        "original": "In a reversal , the Trump administration now says green <span style=\"color: blue;\">card</span> holders can enter the US",
-        "edited": "In a reversal , the Trump administration now says green <span style=\"color: blue;\">tomato</span> holders can enter the US"
-    },
-    {
-        "original": "Who is Rachel Crooks ? Trump sexual assault accuser enters Ohio <span style=\"color: blue;\">race</span> in district president carried",
-        "edited": "Who is Rachel Crooks ? Trump sexual assault accuser enters Ohio <span style=\"color: blue;\">carnival</span> in district president carried"
-    },
-    {
-        "original": "Trump <span style=\"color: blue;\">travel</span> ban blocked by Va.-based federal appeals court",
-        "edited": "Trump <span style=\"color: blue;\">eating</span> ban blocked by Va.-based federal appeals court"
-    },
-    {
-        "original": "Trump willing to pursue ' temporary deal ' on <span style=\"color: blue;\">healthcare</span> ",
-        "edited": "Trump willing to pursue ' temporary deal ' on <span style=\"color: blue;\">tacos</span> "
-    },
-    {
-        "original": "Trump offers ' congratulations ' to <span style=\"color: blue;\">America</span> on anniversary of Mueller investigation",
-        "edited": "Trump offers ' congratulations ' to <span style=\"color: blue;\">himself</span> on anniversary of Mueller investigation"
-    },
-    {
-        "original": "A judge ruled this <span style=\"color: blue;\">veteran</span> is a US citizen . Now he faces deportation to Mexico",
-        "edited": "A judge ruled this <span style=\"color: blue;\">cat</span> is a US citizen . Now he faces deportation to Mexico"
-    },
-    {
-        "original": "U.S. Already Feeling <span style=\"color: blue;\">Consequences</span> Of Global Warming , Draft Report Finds",
-        "edited": "U.S. Already Feeling <span style=\"color: blue;\">Chills</span> Of Global Warming , Draft Report Finds"
-    },
-    {
-        "original": "Sanders and Warren are criticizing Obama \u2019s $ 400,000 Wall Street <span style=\"color: blue;\">speech</span> . Here \u2019s why it \u2019s a bad idea .",
-        "edited": "Sanders and Warren are criticizing Obama \u2019s $ 400,000 Wall Street <span style=\"color: blue;\">cake</span> . Here \u2019s why it \u2019s a bad idea ."
-    },
-    {
-        "original": "Afghan girls <span style=\"color: blue;\">robotics</span> team allowed in by Trump arrives in U.S.",
-        "edited": "Afghan girls <span style=\"color: blue;\">gymnastics</span> team allowed in by Trump arrives in U.S."
-    },
-    {
-        "original": "New Venezuela assembly declares itself superior govt <span style=\"color: blue;\">branch</span> ",
-        "edited": "New Venezuela assembly declares itself superior govt <span style=\"color: blue;\">tree</span> "
-    },
-    {
-        "original": "Fukushima \u2019s radioactive <span style=\"color: blue;\">water</span> may have been leaking for months",
-        "edited": "Fukushima \u2019s radioactive <span style=\"color: blue;\">bladder</span> may have been leaking for months"
-    },
-    {
-        "original": "Antonio Villaraigosa left the mayor 's office ' with no job , no house , no car . ' Here 's how he <span style=\"color: blue;\">made</span> millions since then",
-        "edited": "Antonio Villaraigosa left the mayor 's office ' with no job , no house , no car . ' Here 's how he <span style=\"color: blue;\">stole</span> millions since then"
-    },
-    {
-        "original": "Orange County <span style=\"color: blue;\">Rep. Dana Rohrabacher</span> was lobbied by the former Soviet military intelligence officer at the Trump meeting",
-        "edited": "Orange County <span style=\"color: blue;\">rapper</span> was lobbied by the former Soviet military intelligence officer at the Trump meeting"
-    },
-    {
-        "original": "\u201c Trump \u2019s problem child \u201d : Mark Levin , Alex Jones rage against Ivanka after her \u201c uncomfortable <span style=\"color: blue;\">embrace</span> of refugees \u201d",
-        "edited": "\u201c Trump \u2019s problem child \u201d : Mark Levin , Alex Jones rage against Ivanka after her \u201c uncomfortable <span style=\"color: blue;\">purchase</span> of refugees \u201d"
-    },
-    {
-        "original": "Trump \u2019s counter-jihad How the anti-Muslim fringe conquered the White <span style=\"color: blue;\">House</span> .",
-        "edited": "Trump \u2019s counter-jihad How the anti-Muslim fringe conquered the White <span style=\"color: blue;\">trash</span> ."
-    },
-    {
-        "original": "WHO calls for <span style=\"color: blue;\">elimination</span> of trans fat by 2023",
-        "edited": "WHO calls for <span style=\"color: blue;\">Monetization</span> of trans fat by 2023"
-    },
-    {
-        "original": "Woody Guthrie Wrote of His Contempt for His <span style=\"color: blue;\">Landlord</span> , Donald Trump \u2019s Father",
-        "edited": "Woody Guthrie Wrote of His Contempt for His <span style=\"color: blue;\">Sister</span> , Donald Trump \u2019s Father"
-    },
-    {
-        "original": "Sanders and Warren are criticizing Obama \u2019s $ 400,000 Wall <span style=\"color: blue;\">Street</span> speech . Here \u2019s why it \u2019s a bad idea .",
-        "edited": "Sanders and Warren are criticizing Obama \u2019s $ 400,000 Wall <span style=\"color: blue;\">Banger</span> speech . Here \u2019s why it \u2019s a bad idea ."
-    },
-    {
-        "original": "Sean Spicer defends inauguration claim : ' Sometimes we can disagree with <span style=\"color: blue;\">facts</span> '",
-        "edited": "Sean Spicer defends inauguration claim : ' Sometimes we can disagree with <span style=\"color: blue;\">fudge</span> '"
-    },
-    {
-        "original": "Americans living in rural areas more likely to die by <span style=\"color: blue;\">suicide</span> ",
-        "edited": "Americans living in rural areas more likely to die by <span style=\"color: blue;\">boredom</span> "
-    },
-    {
-        "original": "Indian opposition calls for investigation into Adani over financial <span style=\"color: blue;\">fraud</span> allegations",
-        "edited": "Indian opposition calls for investigation into Adani over financial <span style=\"color: blue;\">generosity</span> allegations"
-    },
-    {
-        "original": "Florida House Passes <span style=\"color: blue;\">Gun Control</span> Package , Measure Awaits Governor 's Signature",
-        "edited": "Florida House Passes <span style=\"color: blue;\">breakfast</span> Package , Measure Awaits Governor 's Signature"
-    },
-    {
-        "original": "Kremlin <span style=\"color: blue;\">tweets</span> during closed-door Oval Office meeting with Trump",
-        "edited": "Kremlin <span style=\"color: blue;\">sleeps</span> during closed-door Oval Office meeting with Trump"
-    },
-    {
-        "original": "CNN files lawsuit seeking Comey 's Trump <span style=\"color: blue;\">memos</span> ",
-        "edited": "CNN files lawsuit seeking Comey 's Trump <span style=\"color: blue;\">poems</span> "
-    },
-    {
-        "original": "Is 5G technology dangerous ? Early data shows a slight increase of <span style=\"color: blue;\">tumors</span> in male rats exposed to cellphone radiation",
-        "edited": "Is 5G technology dangerous ? Early data shows a slight increase of <span style=\"color: blue;\">selfies</span> in male rats exposed to cellphone radiation"
-    },
-    {
-        "original": "Donald Trump claims Barack Obama ordered ' <span style=\"color: blue;\">wire</span> tap ' on Trump Tower , but provides no evidence",
-        "edited": "Donald Trump claims Barack Obama ordered ' <span style=\"color: blue;\">beer</span> tap ' on Trump Tower , but provides no evidence"
-    },
-    {
-        "original": "Pakistan postpones U.S. visit after Trump <span style=\"color: blue;\">speech</span> ",
-        "edited": "Pakistan postpones U.S. visit after Trump <span style=\"color: blue;\">haircut</span> "
-    },
-    {
-        "original": "NPR News : Far-Left <span style=\"color: blue;\">Candidate</span> Jean-Luc Melenchon Surges In Polls Ahead Of French Election",
-        "edited": "NPR News : Far-Left <span style=\"color: blue;\">panda</span> Jean-Luc Melenchon Surges In Polls Ahead Of French Election"
-    },
-    {
-        "original": "4 arrested in Sydney <span style=\"color: blue;\">raids</span> to stop terrorist attack",
-        "edited": "4 arrested in Sydney <span style=\"color: blue;\">boasting</span> to stop terrorist attack"
-    },
-    {
-        "original": "NRA 's Role In Connecting Trump Campaign With Russians Is Under Senate <span style=\"color: blue;\">Investigation</span> ",
-        "edited": "NRA 's Role In Connecting Trump Campaign With Russians Is Under Senate <span style=\"color: blue;\">Mattress</span> "
-    },
-    {
-        "original": "A U.S. citizen has escaped a Bali <span style=\"color: blue;\">prison</span> by climbing out of the roof",
-        "edited": "A U.S. citizen has escaped a Bali <span style=\"color: blue;\">movie</span> by climbing out of the roof"
-    },
-    {
-        "original": "America 's military wo n't save us from Trump 's <span style=\"color: blue;\">fascism</span> ",
-        "edited": "America 's military wo n't save us from Trump 's <span style=\"color: blue;\">hair</span> "
-    },
-    {
-        "original": " <span style=\"color: blue;\">Lawless</span> waters test Southeast Asian nations in fight against Islamic State",
-        "edited": " <span style=\"color: blue;\">Stinky</span> waters test Southeast Asian nations in fight against Islamic State"
-    },
-    {
-        "original": "Report : Pro teams avoiding <span style=\"color: blue;\">Trump</span> hotels",
-        "edited": "Report : Pro teams avoiding <span style=\"color: blue;\">cheap</span> hotels"
-    },
-    {
-        "original": "Trump <span style=\"color: blue;\">Product</span> Endorsements Drive Consumers ... Away",
-        "edited": "Trump <span style=\"color: blue;\">Halitosis</span> Endorsements Drive Consumers ... Away"
-    },
-    {
-        "original": "Obama <span style=\"color: blue;\">proves</span> himself as a kind Politician .",
-        "edited": "Obama <span style=\"color: blue;\">sketches</span> himself as a kind Politician ."
-    },
-    {
-        "original": "Taiwan train company wants <span style=\"color: blue;\">apology</span> for ' demon doll ' passenger",
-        "edited": "Taiwan train company wants <span style=\"color: blue;\">date</span> for ' demon doll ' passenger"
-    },
-    {
-        "original": "North and South Korea Agree to <span style=\"color: blue;\">Border</span> Talks Next Week",
-        "edited": "North and South Korea Agree to <span style=\"color: blue;\">pillow</span> Talks Next Week"
-    },
-    {
-        "original": "Bernie Sanders Fined for Colluding with <span style=\"color: blue;\">Australian Labor Party</span> ",
-        "edited": "Bernie Sanders Fined for Colluding with <span style=\"color: blue;\">Kangaroos</span> "
-    },
-    {
-        "original": "Crowd <span style=\"color: blue;\">catches</span> girl after ride fall",
-        "edited": "Crowd <span style=\"color: blue;\">cheers</span> girl after ride fall"
-    },
-    {
-        "original": "Over 10,000 migrant <span style=\"color: blue;\">children</span> are now in US government custody at 100 shelters in 14 states",
-        "edited": "Over 10,000 migrant <span style=\"color: blue;\">iguanas</span> are now in US government custody at 100 shelters in 14 states"
-    },
-    {
-        "original": "Man Sets Off Explosive Device at L.A.-Area Cheesecake Factory , No <span style=\"color: blue;\">Injuries</span> ",
-        "edited": "Man Sets Off Explosive Device at L.A.-Area Cheesecake Factory , No <span style=\"color: blue;\">complaints</span> "
-    },
-    {
-        "original": "Ben Shapiro : Americans more tolerant but hate each other 's <span style=\"color: blue;\">politics</span> ",
-        "edited": "Ben Shapiro : Americans more tolerant but hate each other 's <span style=\"color: blue;\">meatloaf</span> "
-    },
-    {
-        "original": "RNC \u201c cloakroom \u201d was secretly funded by corporate <span style=\"color: blue;\">cash</span> ",
-        "edited": "RNC \u201c cloakroom \u201d was secretly funded by corporate <span style=\"color: blue;\">jackets</span> "
-    },
-    {
-        "original": "' UK <span style=\"color: blue;\">wellbeing</span> rises after Brexit vote '",
-        "edited": "' UK <span style=\"color: blue;\">landfill</span> rises after Brexit vote '"
-    },
-    {
-        "original": "Gov. Kasich slams President Trump 's move on <span style=\"color: blue;\">health</span> care subsidies",
-        "edited": "Gov. Kasich slams President Trump 's move on <span style=\"color: blue;\">haircut</span> care subsidies"
-    },
-    {
-        "original": "Canada to <span style=\"color: blue;\">legalize</span> recreational marijuana in 2018 , official says",
-        "edited": "Canada to <span style=\"color: blue;\">smoke</span> recreational marijuana in 2018 , official says"
-    },
-    {
-        "original": "Turkey tells <span style=\"color: blue;\">citizens</span> to reconsider travelling to US",
-        "edited": "Turkey tells <span style=\"color: blue;\">chickens</span> to reconsider travelling to US"
-    },
-    {
-        "original": "The battles ahead : <span style=\"color: blue;\">Meet</span> the biggest opponents of single-payer",
-        "edited": "The battles ahead : <span style=\"color: blue;\">punch</span> the biggest opponents of single-payer"
-    },
-    {
-        "original": "What every major <span style=\"color: blue;\">health</span> group has said about Graham-Cassidy",
-        "edited": "What every major <span style=\"color: blue;\">rock</span> group has said about Graham-Cassidy"
-    },
-    {
-        "original": "Eric Trumo Claims <span style=\"color: blue;\">Journalists</span> Drank ' Cases of Red Bull ' To Keep up With His 71 Years Old Dad",
-        "edited": "Eric Trumo Claims <span style=\"color: blue;\">Toddlers</span> Drank ' Cases of Red Bull ' To Keep up With His 71 Years Old Dad"
-    },
-    {
-        "original": "Alabama agonizes over <span style=\"color: blue;\">Trump</span> attacks on Sessions",
-        "edited": "Alabama agonizes over <span style=\"color: blue;\">sneak</span> attacks on Sessions"
-    },
-    {
-        "original": "GOPer : Schiff hopes he 'll benefit from Trump 's <span style=\"color: blue;\">attack</span> ",
-        "edited": "GOPer : Schiff hopes he 'll benefit from Trump 's <span style=\"color: blue;\">toupee</span> "
-    },
-    {
-        "original": "APNewsBreak : Border <span style=\"color: blue;\">arrests</span> plunge , deportation arrests soar",
-        "edited": "APNewsBreak : Border <span style=\"color: blue;\">parties</span> plunge , deportation arrests soar"
-    },
-    {
-        "original": "What would happen if Trump sparked a <span style=\"color: blue;\">trade</span> war with China ?",
-        "edited": "What would happen if Trump sparked a <span style=\"color: blue;\">thumb</span> war with China ?"
-    },
-    {
-        "original": "YouTube accused of ' violence ' against young children over kids ' <span style=\"color: blue;\">content</span> ",
-        "edited": "YouTube accused of ' violence ' against young children over kids ' <span style=\"color: blue;\">breakfast</span> "
-    },
-    {
-        "original": "Iranian general threatens to ' <span style=\"color: blue;\">bury</span> ' Donald Trump",
-        "edited": "Iranian general threatens to ' <span style=\"color: blue;\">wedgie</span> ' Donald Trump"
-    },
-    {
-        "original": "Rwanda <span style=\"color: blue;\">killed</span> 37 petty criminals , Human Rights Watch says - BBC News",
-        "edited": "Rwanda <span style=\"color: blue;\">pets</span> 37 petty criminals , Human Rights Watch says - BBC News"
-    },
-    {
-        "original": "Over 10,000 migrant <span style=\"color: blue;\">children</span> are now in US government custody at 100 shelters in 14 states",
-        "edited": "Over 10,000 migrant <span style=\"color: blue;\">llamas</span> are now in US government custody at 100 shelters in 14 states"
-    },
-    {
-        "original": "Carville : \u2018 No One \u2019 Is in Charge of the <span style=\"color: blue;\">Democratic Party</span> ",
-        "edited": "Carville : \u2018 No One \u2019 Is in Charge of the <span style=\"color: blue;\">abyss</span> "
-    },
-    {
-        "original": " <span style=\"color: blue;\">Leading</span> Constitutional Scholar : Comey Firing Legal , but Trump Has Committed Impeachable Offenses",
-        "edited": " <span style=\"color: blue;\">Exhausted</span> Constitutional Scholar : Comey Firing Legal , but Trump Has Committed Impeachable Offenses"
-    },
-    {
-        "original": "Donald Trump <span style=\"color: blue;\">Blasts</span> Reporters at Trump Tower For One-Sided Charlottesville Reporting",
-        "edited": "Donald Trump <span style=\"color: blue;\">Moons</span> Reporters at Trump Tower For One-Sided Charlottesville Reporting"
-    },
-    {
-        "original": "Cohen Remains Trump 's <span style=\"color: blue;\">Lawyer</span> Despite Probe , Spokesman Says",
-        "edited": "Cohen Remains Trump 's <span style=\"color: blue;\">playmate</span> Despite Probe , Spokesman Says"
-    }
+    // {
+    //     "original": "Schwarzenegger launches new effort to <span style=\"color: blue;\">counter</span> Trump on climate",
+    //     "edited": "Schwarzenegger launches new effort to <span style=\"color: blue;\">destroy</span> Trump on climate"
+    // },
+    // {
+    //     "original": "Fla . Gov. Rick Scott expected in Washington to <span style=\"color: blue;\">raise</span> money for widely anticipated Senate run",
+    //     "edited": "Fla . Gov. Rick Scott expected in Washington to <span style=\"color: blue;\">waste</span> money for widely anticipated Senate run"
+    // },
+    // {
+    //     "original": " <span style=\"color: blue;\">Affirmative Action</span> : Now More Than Ever",
+    //     "edited": " <span style=\"color: blue;\">Booze</span> : Now More Than Ever"
+    // },
+    // {
+    //     "original": "North Korean <span style=\"color: blue;\">Official</span> : Situation in a ' Vicious Cycle '",
+    //     "edited": "North Korean <span style=\"color: blue;\">drier</span> : Situation in a ' Vicious Cycle '"
+    // },
+    // {
+    //     "original": "Trump Paid About $ 38 Million In Federal <span style=\"color: blue;\">Taxes</span> In 2005 , Leaked Returns Say",
+    //     "edited": "Trump Paid About $ 38 Million In Federal <span style=\"color: blue;\">Bribes</span> In 2005 , Leaked Returns Say"
+    // },
+    // {
+    //     "original": "Moscow storm : 11 killed as high <span style=\"color: blue;\">winds</span> strike Russian capital",
+    //     "edited": "Moscow storm : 11 killed as high <span style=\"color: blue;\">stoners</span> strike Russian capital"
+    // },
+    // {
+    //     "original": "Eyeing an election , Austria 's far-right <span style=\"color: blue;\">Freedom Party</span> commits to EU",
+    //     "edited": "Eyeing an election , Austria 's far-right <span style=\"color: blue;\">gecko</span> commits to EU"
+    // },
+    // {
+    //     "original": "Bernie Sanders ' <span style=\"color: blue;\">Son</span> Is Extremely Mad Online",
+    //     "edited": "Bernie Sanders ' <span style=\"color: blue;\">Grandmother</span> Is Extremely Mad Online"
+    // },
+    // {
+    //     "original": "Trump \u2019s Rhetoric Helpless Against Rise of <span style=\"color: blue;\">Trade</span> Deficit With China",
+    //     "edited": "Trump \u2019s Rhetoric Helpless Against Rise of <span style=\"color: blue;\">cheese</span> Deficit With China"
+    // },
+    // {
+    //     "original": "' Matilda ' film on last czar 's <span style=\"color: blue;\">affair</span> , sparks controversy in Russia",
+    //     "edited": "' Matilda ' film on last czar 's <span style=\"color: blue;\">nose</span> , sparks controversy in Russia"
+    // },
+    // {
+    //     "original": "Theresa May : \u2018 Highly Likely \u2019 Russia Is Responsible for <span style=\"color: blue;\">Poisoning</span> Former Spy",
+    //     "edited": "Theresa May : \u2018 Highly Likely \u2019 Russia Is Responsible for <span style=\"color: blue;\">teasing</span> Former Spy"
+    // },
+    // {
+    //     "original": "Fox Keeps Urging Trump To <span style=\"color: blue;\">Fire</span> Mueller",
+    //     "edited": "Fox Keeps Urging Trump To <span style=\"color: blue;\">palpate</span> Mueller"
+    // },
+    // {
+    //     "original": "Just One GOP Senator Voted To Block Legislation Cutting Social Security , Medicare And <span style=\"color: blue;\">Medicaid</span> ",
+    //     "edited": "Just One GOP Senator Voted To Block Legislation Cutting Social Security , Medicare And <span style=\"color: blue;\">bingo</span> "
+    // },
+    // {
+    //     "original": "Justice Dept. Report Is Expected to <span style=\"color: blue;\">Criticize</span> Andrew McCabe Over Media Disclosures",
+    //     "edited": "Justice Dept. Report Is Expected to <span style=\"color: blue;\">pity</span> Andrew McCabe Over Media Disclosures"
+    // },
+    // {
+    //     "original": "Tillerson <span style=\"color: blue;\">faces</span> his toughest audience yet : The State Department",
+    //     "edited": "Tillerson <span style=\"color: blue;\">mocks</span> his toughest audience yet : The State Department"
+    // },
+    // {
+    //     "original": "US <span style=\"color: blue;\">health</span> secretary Tom Price quits",
+    //     "edited": "US <span style=\"color: blue;\">cheese</span> secretary Tom Price quits"
+    // },
+    // {
+    //     "original": "The Trump effect : New study connects white American <span style=\"color: blue;\">intolerance</span> and support for authoritarianism",
+    //     "edited": "The Trump effect : New study connects white American <span style=\"color: blue;\">cheese</span> and support for authoritarianism"
+    // },
+    // {
+    //     "original": "Equifax Says Cyberattack May Have Affected 143 Million <span style=\"color: blue;\">Customers</span> ",
+    //     "edited": "Equifax Says Cyberattack May Have Affected 143 Million <span style=\"color: blue;\">burglars</span> "
+    // },
+    // {
+    //     "original": "Trump may give in on China <span style=\"color: blue;\">trade</span> to get North Korea \u2019s Kim Jong Un , says former ambassador",
+    //     "edited": "Trump may give in on China <span style=\"color: blue;\">patterns</span> to get North Korea \u2019s Kim Jong Un , says former ambassador"
+    // },
+    // {
+    //     "original": "The Shallow State \u2019s Need for Attention Is Destroying Trump \u2019s <span style=\"color: blue;\">White</span> House",
+    //     "edited": "The Shallow State \u2019s Need for Attention Is Destroying Trump \u2019s <span style=\"color: blue;\">dog</span> House"
+    // },
+    // {
+    //     "original": "Barred from China and silenced in the US , this beauty <span style=\"color: blue;\">queen</span> is n't backing down",
+    //     "edited": "Barred from China and silenced in the US , this beauty <span style=\"color: blue;\">mattress</span> is n't backing down"
+    // },
+    // {
+    //     "original": "House Intel <span style=\"color: blue;\">Republicans</span> Have Cleared Trump . So Are The Russia Investigations Over ?",
+    //     "edited": "House Intel <span style=\"color: blue;\">Defectives</span> Have Cleared Trump . So Are The Russia Investigations Over ?"
+    // },
+    // {
+    //     "original": "Donald Trump : Democrats Want Government Shutdown for <span style=\"color: blue;\">Christmas</span> ",
+    //     "edited": "Donald Trump : Democrats Want Government Shutdown for <span style=\"color: blue;\">date</span> "
+    // },
+    // {
+    //     "original": "Dozens of migrants die of <span style=\"color: blue;\">thirst</span> while crossing desert in Niger",
+    //     "edited": "Dozens of migrants die of <span style=\"color: blue;\">boredom</span> while crossing desert in Niger"
+    // },
+    // {
+    //     "original": "Trump Once Again Invites Questions And Doubts About His <span style=\"color: blue;\">Stability</span> ",
+    //     "edited": "Trump Once Again Invites Questions And Doubts About His <span style=\"color: blue;\">hairdresser</span> "
+    // },
+    // {
+    //     "original": " <span style=\"color: blue;\">Russia</span> says will not offer to host Trump meeting with North Korea 's Kim : RIA",
+    //     "edited": " <span style=\"color: blue;\">Building</span> says will not offer to host Trump meeting with North Korea 's Kim : RIA"
+    // },
+    // {
+    //     "original": "Trump : U.S. has ' no choice ' but to deal with North Korea <span style=\"color: blue;\">arms</span> challenge",
+    //     "edited": "Trump : U.S. has ' no choice ' but to deal with North Korea <span style=\"color: blue;\">kimchi</span> challenge"
+    // },
+    // {
+    //     "original": "4 arrested in Sydney raids to stop terrorist <span style=\"color: blue;\">attack</span> ",
+    //     "edited": "4 arrested in Sydney raids to stop terrorist <span style=\"color: blue;\">kangaroo</span> "
+    // },
+    // {
+    //     "original": "Trump Says He Passed On Being ' <span style=\"color: blue;\">Person</span> Of The Year . ' ' Time ' Says He 's ' Incorrect '",
+    //     "edited": "Trump Says He Passed On Being ' <span style=\"color: blue;\">puppet</span> Of The Year . ' ' Time ' Says He 's ' Incorrect '"
+    // },
+    // {
+    //     "original": "Is There Method in Donald Trump \u2019s <span style=\"color: blue;\">Madness</span> ?",
+    //     "edited": "Is There Method in Donald Trump \u2019s <span style=\"color: blue;\">acting</span> ?"
+    // },
+    // {
+    //     "original": "Democratic leadership was quick to slam the GOP 's <span style=\"color: blue;\">tax</span> plan",
+    //     "edited": "Democratic leadership was quick to slam the GOP 's <span style=\"color: blue;\">breakfast</span> plan"
+    // },
+    // {
+    //     "original": "Putin tells Americans to stop disrespecting Trump , because he 's the <span style=\"color: blue;\">president</span> ",
+    //     "edited": "Putin tells Americans to stop disrespecting Trump , because he 's the <span style=\"color: blue;\">best</span> "
+    // },
+    // {
+    //     "original": "China conducts live fire <span style=\"color: blue;\">combat</span> drills in East China Sea : Xinhua",
+    //     "edited": "China conducts live fire <span style=\"color: blue;\">lighting</span> drills in East China Sea : Xinhua"
+    // },
+    // {
+    //     "original": " <span style=\"color: blue;\">Oil</span> Halts Slide Near $ 47 as U.S. Stockpiles Seen Extending Drop",
+    //     "edited": " <span style=\"color: blue;\">Mud</span> Halts Slide Near $ 47 as U.S. Stockpiles Seen Extending Drop"
+    // },
+    // {
+    //     "original": "Obama Criticizes Trumps Immigration Ban , Is ' Heartened ' By <span style=\"color: blue;\">Protests</span> ",
+    //     "edited": "Obama Criticizes Trumps Immigration Ban , Is ' Heartened ' By <span style=\"color: blue;\">cookies</span> "
+    // },
+    // {
+    //     "original": "CBS Poll : Americans lack confidence in Trump 's ability to handle <span style=\"color: blue;\">North Korea</span> ",
+    //     "edited": "CBS Poll : Americans lack confidence in Trump 's ability to handle <span style=\"color: blue;\">spaghetti</span> "
+    // },
+    // {
+    //     "original": "U.S. judge loosens \" travel ban \" restrictions to exempt <span style=\"color: blue;\">grandparents</span> , other family",
+    //     "edited": "U.S. judge loosens \" travel ban \" restrictions to exempt <span style=\"color: blue;\">rattlesnakes</span> , other family"
+    // },
+    // {
+    //     "original": "Omarosa on ' Big Brother ' : U.S. wo n't be ' OK ' under <span style=\"color: blue;\">Trump</span> ",
+    //     "edited": "Omarosa on ' Big Brother ' : U.S. wo n't be ' OK ' under <span style=\"color: blue;\">me</span> "
+    // },
+    // {
+    //     "original": "Mattis to brief Trump on <span style=\"color: blue;\">options</span> for military action in Syria",
+    //     "edited": "Mattis to brief Trump on <span style=\"color: blue;\">undergarments</span> for military action in Syria"
+    // },
+    // {
+    //     "original": "Mexican bank intervenes after woman , 116 , deemed ' too old ' for <span style=\"color: blue;\">card</span> ",
+    //     "edited": "Mexican bank intervenes after woman , 116 , deemed ' too old ' for <span style=\"color: blue;\">birthday</span> "
+    // },
+    // {
+    //     "original": "North Korean Official : <span style=\"color: blue;\">Situation</span> in a ' Vicious Cycle '",
+    //     "edited": "North Korean Official : <span style=\"color: blue;\">Laundry</span> in a ' Vicious Cycle '"
+    // },
+    // {
+    //     "original": "California governor scans wildfire damage and <span style=\"color: blue;\">blasts</span> Trump for Paris climate pullout",
+    //     "edited": "California governor scans wildfire damage and <span style=\"color: blue;\">strangles</span> Trump for Paris climate pullout"
+    // },
+    // {
+    //     "original": "Senate Judiciary Committee : Kushner forwarded emails about ' a Russian backdoor overture and <span style=\"color: blue;\">dinner</span> invite '",
+    //     "edited": "Senate Judiciary Committee : Kushner forwarded emails about ' a Russian backdoor overture and <span style=\"color: blue;\">date</span> invite '"
+    // },
+    // {
+    //     "original": "Putin ' is <span style=\"color: blue;\">lying</span> ' by denying Russian interference in US election , Susan Rice says",
+    //     "edited": "Putin ' is <span style=\"color: blue;\">helping</span> ' by denying Russian interference in US election , Susan Rice says"
+    // },
+    // {
+    //     "original": "Forget Atlantis : ' Lost continent ' found under <span style=\"color: blue;\">Indian Ocean</span> ",
+    //     "edited": "Forget Atlantis : ' Lost continent ' found under <span style=\"color: blue;\">rock</span> "
+    // },
+    // {
+    //     "original": "Report : Broward County Grew Increasingly Unsafe as Obama-Era Discipline Policies Protected <span style=\"color: blue;\">Minority</span> Students",
+    //     "edited": "Report : Broward County Grew Increasingly Unsafe as Obama-Era Discipline Policies Protected <span style=\"color: blue;\">art</span> Students"
+    // },
+    // {
+    //     "original": "Trump says <span style=\"color: blue;\">Venezuela</span> 's ' a mess '",
+    //     "edited": "Trump says <span style=\"color: blue;\">bedroom</span> 's ' a mess '"
+    // },
+    // {
+    //     "original": "Trump throws cold <span style=\"color: blue;\">water</span> on Roy Moore accuser 's yearbook claim",
+    //     "edited": "Trump throws cold <span style=\"color: blue;\">puppies</span> on Roy Moore accuser 's yearbook claim"
+    // },
+    // {
+    //     "original": "Trump 's Official Portrait Resembles a <span style=\"color: blue;\">Smiley</span> Emoji",
+    //     "edited": "Trump 's Official Portrait Resembles a <span style=\"color: blue;\">Smelly</span> Emoji"
+    // },
+    // {
+    //     "original": "White <span style=\"color: blue;\">House</span> struggles to contain Flynn fallout",
+    //     "edited": "White <span style=\"color: blue;\">man</span> struggles to contain Flynn fallout"
+    // },
+    // {
+    //     "original": "The Latest : CEOs confident in <span style=\"color: blue;\">future</span> , survey finds",
+    //     "edited": "The Latest : CEOs confident in <span style=\"color: blue;\">fraud</span> , survey finds"
+    // },
+    // {
+    //     "original": "Do conservatives feel the same fear and embarrassment as I do over <span style=\"color: blue;\">President Trump</span> ?",
+    //     "edited": "Do conservatives feel the same fear and embarrassment as I do over <span style=\"color: blue;\">cuddling</span> ?"
+    // },
+    // {
+    //     "original": "Trump is abandoning the <span style=\"color: blue;\">climate</span> pact",
+    //     "edited": "Trump is abandoning the <span style=\"color: blue;\">blood</span> pact"
+    // },
+    // {
+    //     "original": "Leigh Corfman on her <span style=\"color: blue;\">encounter</span> with Roy Moore at age 14",
+    //     "edited": "Leigh Corfman on her <span style=\"color: blue;\">marriage</span> with Roy Moore at age 14"
+    // },
+    // {
+    //     "original": "Trump is likely to <span style=\"color: blue;\">announce</span> Jerome Powell as the next Fed chair on Thursday",
+    //     "edited": "Trump is likely to <span style=\"color: blue;\">repurpose</span> Jerome Powell as the next Fed chair on Thursday"
+    // },
+    // {
+    //     "original": "Former Pentagon chief Ash Carter returns to teach at <span style=\"color: blue;\">Harvard</span> ",
+    //     "edited": "Former Pentagon chief Ash Carter returns to teach at <span style=\"color: blue;\">Preschool</span> "
+    // },
+    // {
+    //     "original": "Two large <span style=\"color: blue;\">banks</span> to raise their minimum wage to $ 15 an hour",
+    //     "edited": "Two large <span style=\"color: blue;\">coffees</span> to raise their minimum wage to $ 15 an hour"
+    // },
+    // {
+    //     "original": "This John Brennan quote on Russia just made Donald Trump 's <span style=\"color: blue;\">life</span> much harder",
+    //     "edited": "This John Brennan quote on Russia just made Donald Trump 's <span style=\"color: blue;\">pants</span> much harder"
+    // },
+    // {
+    //     "original": " <span style=\"color: blue;\">Mark Zuckerberg</span> 's net worth plunges $ 5.3 billion on Facebook data controversy",
+    //     "edited": " <span style=\"color: blue;\">Dog</span> 's net worth plunges $ 5.3 billion on Facebook data controversy"
+    // },
+    // {
+    //     "original": "Trump to <span style=\"color: blue;\">decide</span> \u2018 very quickly \u2019 on US pullout from Syria",
+    //     "edited": "Trump to <span style=\"color: blue;\">tweet</span> \u2018 very quickly \u2019 on US pullout from Syria"
+    // },
+    // {
+    //     "original": "Ronny Jackson <span style=\"color: blue;\">withdraws</span> as Trump 's nominee to head the VA",
+    //     "edited": "Ronny Jackson <span style=\"color: blue;\">divorces</span> as Trump 's nominee to head the VA"
+    // },
+    // {
+    //     "original": "On Donald Trump , Republicans should prefer <span style=\"color: blue;\">war</span> to appeasement",
+    //     "edited": "On Donald Trump , Republicans should prefer <span style=\"color: blue;\">pancakes</span> to appeasement"
+    // },
+    // {
+    //     "original": "China Learns How to Get Trump 's <span style=\"color: blue;\">Ear</span> : Through Jared Kushner",
+    //     "edited": "China Learns How to Get Trump 's <span style=\"color: blue;\">underwear</span> : Through Jared Kushner"
+    // },
+    // {
+    //     "original": "French parliamentary elections : Emmanuel Macron 's <span style=\"color: blue;\">party</span> expected to triumph as Front National faces collapse",
+    //     "edited": "French parliamentary elections : Emmanuel Macron 's <span style=\"color: blue;\">restaurant</span> expected to triumph as Front National faces collapse"
+    // },
+    // {
+    //     "original": "Florida school massacre sparks church sign : ' When will they love their kids more than their <span style=\"color: blue;\">guns</span> '",
+    //     "edited": "Florida school massacre sparks church sign : ' When will they love their kids more than their <span style=\"color: blue;\">televisions</span> '"
+    // },
+    // {
+    //     "original": "NFL players union vows Donald Trump <span style=\"color: blue;\">comments</span> will not deter stand on protests , safety",
+    //     "edited": "NFL players union vows Donald Trump <span style=\"color: blue;\">rantings</span> will not deter stand on protests , safety"
+    // },
+    // {
+    //     "original": "Las Vegas , hoping to <span style=\"color: blue;\">stem</span> HIV and hepatitis , to get needle vending machines",
+    //     "edited": "Las Vegas , hoping to <span style=\"color: blue;\">spread</span> HIV and hepatitis , to get needle vending machines"
+    // },
+    // {
+    //     "original": "No , Hillary Clinton did not \" give Russia 20 percent of the <span style=\"color: blue;\">uranium</span> \u201d in the US",
+    //     "edited": "No , Hillary Clinton did not \" give Russia 20 percent of the <span style=\"color: blue;\">vodka</span> \u201d in the US"
+    // },
+    // {
+    //     "original": "Trump , Russian <span style=\"color: blue;\">spies</span> and the infamous \u2018 golden shower memos \u2019",
+    //     "edited": "Trump , Russian <span style=\"color: blue;\">prostitutes</span> and the infamous \u2018 golden shower memos \u2019"
+    // },
+    // {
+    //     "original": "Infowars peddled stories from a Russian <span style=\"color: blue;\">propaganda</span> outlet for years",
+    //     "edited": "Infowars peddled stories from a Russian <span style=\"color: blue;\">hat</span> outlet for years"
+    // },
+    // {
+    //     "original": "Mnuchin 's $ 800K <span style=\"color: blue;\">Travel</span> Bill Approved ; Watchdog Seeks More Rigor",
+    //     "edited": "Mnuchin 's $ 800K <span style=\"color: blue;\">restaurant</span> Bill Approved ; Watchdog Seeks More Rigor"
+    // },
+    // {
+    //     "original": "Trump Travel <span style=\"color: blue;\">Ban</span> Faces Court Hearings By Challengers Today",
+    //     "edited": "Trump Travel <span style=\"color: blue;\">Comedy</span> Faces Court Hearings By Challengers Today"
+    // },
+    // {
+    //     "original": "White House says Trump 's legal team supports a second special counsel to <span style=\"color: blue;\">probe</span> FBI , DOJ",
+    //     "edited": "White House says Trump 's legal team supports a second special counsel to <span style=\"color: blue;\">eat</span> FBI , DOJ"
+    // },
+    // {
+    //     "original": "When asked when the last time he thought America \u2018 was great \u2019 Roy Moore replied with \u2018 <span style=\"color: blue;\">slavery</span> \u2019",
+    //     "edited": "When asked when the last time he thought America \u2018 was great \u2019 Roy Moore replied with \u2018 <span style=\"color: blue;\">Disco</span> \u2019"
+    // },
+    // {
+    //     "original": "CNN Poll : Three-quarters of Americans approve of Trump 's plans to <span style=\"color: blue;\">meet</span> with Kim Jong-Un",
+    //     "edited": "CNN Poll : Three-quarters of Americans approve of Trump 's plans to <span style=\"color: blue;\">dance</span> with Kim Jong-Un"
+    // },
+    // {
+    //     "original": "Hiring surges as economy adds 298,000 private-sector jobs in <span style=\"color: blue;\">February</span> ",
+    //     "edited": "Hiring surges as economy adds 298,000 private-sector jobs in <span style=\"color: blue;\">zoos</span> "
+    // },
+    // {
+    //     "original": "Kushner said CNN should fire a fifth of its <span style=\"color: blue;\">staff</span> over election coverage : report",
+    //     "edited": "Kushner said CNN should fire a fifth of its <span style=\"color: blue;\">caterers</span> over election coverage : report"
+    // },
+    // {
+    //     "original": "Pelosi Strikes Back : ' I Think I 'm Worth the <span style=\"color: blue;\">Trouble</span> '",
+    //     "edited": "Pelosi Strikes Back : ' I Think I 'm Worth the <span style=\"color: blue;\">Diamond</span> '"
+    // },
+    // {
+    //     "original": "Trump \u2019s <span style=\"color: blue;\">Trade</span> War With Canada",
+    //     "edited": "Trump \u2019s <span style=\"color: blue;\">thumb</span> War With Canada"
+    // },
+    // {
+    //     "original": "Inter-Shi ' ite tension mounts in Baghdad after <span style=\"color: blue;\">clashes</span> - six killed",
+    //     "edited": "Inter-Shi ' ite tension mounts in Baghdad after <span style=\"color: blue;\">hoedown</span> - six killed"
+    // },
+    // {
+    //     "original": "Fired Trump aide Michael Flynn ' has a story to <span style=\"color: blue;\">tell</span> ' - BBC News",
+    //     "edited": "Fired Trump aide Michael Flynn ' has a story to <span style=\"color: blue;\">write</span> ' - BBC News"
+    // },
+    // {
+    //     "original": "White House staff to throw Spicer a <span style=\"color: blue;\">farewell</span> party",
+    //     "edited": "White House staff to throw Spicer a <span style=\"color: blue;\">pizza</span> party"
+    // },
+    // {
+    //     "original": "' The Wire ' star : Opioids treated differently from <span style=\"color: blue;\">crack</span> because they affect white people",
+    //     "edited": "' The Wire ' star : Opioids treated differently from <span style=\"color: blue;\">milk</span> because they affect white people"
+    // },
+    // {
+    //     "original": "Photos of the Syria strike appear to show <span style=\"color: blue;\">missile</span> interceptors firing blindly , totally failing to stop missile attack",
+    //     "edited": "Photos of the Syria strike appear to show <span style=\"color: blue;\">peanut</span> interceptors firing blindly , totally failing to stop missile attack"
+    // },
+    // {
+    //     "original": "More Than Half A Million Rohingyas Fled Myanmar In A Single <span style=\"color: blue;\">Month</span> ",
+    //     "edited": "More Than Half A Million Rohingyas Fled Myanmar In A Single <span style=\"color: blue;\">trip</span> "
+    // },
+    // {
+    //     "original": "Donald Trump will spark a <span style=\"color: blue;\">war</span> in the Middle East with Iran \u2013 which is great news for Isis",
+    //     "edited": "Donald Trump will spark a <span style=\"color: blue;\">romance</span> in the Middle East with Iran \u2013 which is great news for Isis"
+    // },
+    // {
+    //     "original": "Karl : <span style=\"color: blue;\">Sources</span> close to president say it may be time for Kushner to take leave of absence",
+    //     "edited": "Karl : <span style=\"color: blue;\">Zombies</span> close to president say it may be time for Kushner to take leave of absence"
+    // },
+    // {
+    //     "original": "Deputy fatally shoots 16-year-old <span style=\"color: blue;\">boy</span> in Ohio courtroom , authorities say",
+    //     "edited": "Deputy fatally shoots 16-year-old <span style=\"color: blue;\">dog</span> in Ohio courtroom , authorities say"
+    // },
+    // {
+    //     "original": "Trump \u2019s fundraising prowess keeps <span style=\"color: blue;\">Republican</span> Party close",
+    //     "edited": "Trump \u2019s fundraising prowess keeps <span style=\"color: blue;\">birthday</span> Party close"
+    // },
+    // {
+    //     "original": "This John Brennan quote on Russia just made Donald Trump 's <span style=\"color: blue;\">life</span> much harder",
+    //     "edited": "This John Brennan quote on Russia just made Donald Trump 's <span style=\"color: blue;\">palate</span> much harder"
+    // },
+    // {
+    //     "original": "Amazon removes Indian flag doormat after minister <span style=\"color: blue;\">threatens</span> visa ban",
+    //     "edited": "Amazon removes Indian flag doormat after minister <span style=\"color: blue;\">accepts</span> visa ban"
+    // },
+    // {
+    //     "original": "How a retired <span style=\"color: blue;\">law</span> professor could reshape U.S. democracy",
+    //     "edited": "How a retired <span style=\"color: blue;\">Kinesiology</span> professor could reshape U.S. democracy"
+    // },
+    // {
+    //     "original": "Appeals Court Panel Appears Skeptical of Trump 's <span style=\"color: blue;\">Travel</span> Ban",
+    //     "edited": "Appeals Court Panel Appears Skeptical of Trump 's <span style=\"color: blue;\">deodorant</span> Ban"
+    // },
+    // {
+    //     "original": "Orange County <span style=\"color: blue;\">Rep. Dana Rohrabacher</span> was lobbied by the former Soviet military intelligence officer at the Trump meeting",
+    //     "edited": "Orange County <span style=\"color: blue;\">Buffoon</span> was lobbied by the former Soviet military intelligence officer at the Trump meeting"
+    // },
+    // {
+    //     "original": "Mattis to brief Trump on options for military action in <span style=\"color: blue;\">Syria</span> ",
+    //     "edited": "Mattis to brief Trump on options for military action in <span style=\"color: blue;\">garden</span> "
+    // },
+    // {
+    //     "original": "S &amp; amp ; amp ;P downgrades China 's <span style=\"color: blue;\">rating</span> , citing increasing economic , financial risks",
+    //     "edited": "S &amp; amp ; amp ;P downgrades China 's <span style=\"color: blue;\">Takeout</span> , citing increasing economic , financial risks"
+    // },
+    // {
+    //     "original": "' Poisoned ' Russian dissident : Trump echoed ' one of the Kremlin 's oldest <span style=\"color: blue;\">propaganda</span> tools '",
+    //     "edited": "' Poisoned ' Russian dissident : Trump echoed ' one of the Kremlin 's oldest <span style=\"color: blue;\">bike</span> tools '"
+    // },
+    // {
+    //     "original": "Gunman Killed After <span style=\"color: blue;\">Mass</span> Shooting at San Diego Pool Party",
+    //     "edited": "Gunman Killed After <span style=\"color: blue;\">paintball</span> Shooting at San Diego Pool Party"
+    // },
+    // {
+    //     "original": "Mattis says Korea <span style=\"color: blue;\">talks</span> ca n\u2019t distract from denuclearization",
+    //     "edited": "Mattis says Korea <span style=\"color: blue;\">puppies</span> ca n\u2019t distract from denuclearization"
+    // },
+    // {
+    //     "original": "German anti-Muslim AfD party politician converts to <span style=\"color: blue;\">Islam</span> ",
+    //     "edited": "German anti-Muslim AfD party politician converts to <span style=\"color: blue;\">decaf</span> "
+    // },
+    // {
+    //     "original": "Trump 's <span style=\"color: blue;\">rhetoric</span> will never unify Americans \u2014 because Trump does n't want to unify Americans",
+    //     "edited": "Trump 's <span style=\"color: blue;\">hair</span> will never unify Americans \u2014 because Trump does n't want to unify Americans"
+    // },
+    // {
+    //     "original": "[ Breaking ] Syrian militias say capture Tabqa City and Dam from <span style=\"color: blue;\">ISIS</span> ",
+    //     "edited": "[ Breaking ] Syrian militias say capture Tabqa City and Dam from <span style=\"color: blue;\">kittens</span> "
+    // },
+    // {
+    //     "original": "As Joe Arpaio waits for <span style=\"color: blue;\">mercy</span> , 5 things to know about presidential pardons .",
+    //     "edited": "As Joe Arpaio waits for <span style=\"color: blue;\">pizza</span> , 5 things to know about presidential pardons ."
+    // },
+    // {
+    //     "original": " <span style=\"color: blue;\">Taylor</span> Impresses Trump for Fed Chairman , Warsh Slips",
+    //     "edited": " <span style=\"color: blue;\">monkey</span> Impresses Trump for Fed Chairman , Warsh Slips"
+    // },
+    // {
+    //     "original": "MAR 12 2018 , 5:23 AM ET Qataris opted not to give info on Kushner , secret <span style=\"color: blue;\">meetings</span> to Mueller",
+    //     "edited": "MAR 12 2018 , 5:23 AM ET Qataris opted not to give info on Kushner , secret <span style=\"color: blue;\">poems</span> to Mueller"
+    // },
+    // {
+    //     "original": "Quebec \u2019s legislators last week unanimously passed a resolution calling for shopkeepers to stop saying \u201c Bonjour hi \u201d when they <span style=\"color: blue;\">greet</span> customers",
+    //     "edited": "Quebec \u2019s legislators last week unanimously passed a resolution calling for shopkeepers to stop saying \u201c Bonjour hi \u201d when they <span style=\"color: blue;\">kick</span> customers"
+    // },
+    // {
+    //     "original": "White House preparing for McMaster <span style=\"color: blue;\">exit</span> as early as next month",
+    //     "edited": "White House preparing for McMaster <span style=\"color: blue;\">birthday</span> as early as next month"
+    // },
+    // {
+    //     "original": "Rubio calls for congressional investigation of nursing <span style=\"color: blue;\">home</span> ",
+    //     "edited": "Rubio calls for congressional investigation of nursing <span style=\"color: blue;\">cat</span> "
+    // },
+    // {
+    //     "original": "Secret <span style=\"color: blue;\">Service</span> likely would n't have intervened in Trump Jr.-Russia meeting",
+    //     "edited": "Secret <span style=\"color: blue;\">Santa</span> likely would n't have intervened in Trump Jr.-Russia meeting"
+    // },
+    // {
+    //     "original": "Facebook flooded with ' sextortion ' and revenge porn , <span style=\"color: blue;\">files</span> reveal",
+    //     "edited": "Facebook flooded with ' sextortion ' and revenge porn , <span style=\"color: blue;\">comics</span> reveal"
+    // },
+    // {
+    //     "original": "Why Trump may be about to decapitate <span style=\"color: blue;\">North Korea</span> : James Robbins",
+    //     "edited": "Why Trump may be about to decapitate <span style=\"color: blue;\">Beaver</span> : James Robbins"
+    // },
+    // {
+    //     "original": "Scotland offers free <span style=\"color: blue;\">abortions</span> to women from Northern Ireland",
+    //     "edited": "Scotland offers free <span style=\"color: blue;\">babies</span> to women from Northern Ireland"
+    // },
+    // {
+    //     "original": "James Corden says he <span style=\"color: blue;\">regrets</span> Spicer kiss",
+    //     "edited": "James Corden says he <span style=\"color: blue;\">enjoyed</span> Spicer kiss"
+    // },
+    // {
+    //     "original": "Sean Hannity has become the media \u2019s top <span style=\"color: blue;\">conspiracy</span> theorist",
+    //     "edited": "Sean Hannity has become the media \u2019s top <span style=\"color: blue;\">alien</span> theorist"
+    // },
+    // {
+    //     "original": "Billionaire Pritzker to Face Incumbent Rauner in <span style=\"color: blue;\">Illinois</span> Race",
+    //     "edited": "Billionaire Pritzker to Face Incumbent Rauner in <span style=\"color: blue;\">foot</span> Race"
+    // },
+    // {
+    //     "original": "Unauthorized and Sick , Some Illegal Immigrants Steer Clear of Medical <span style=\"color: blue;\">Care</span> ",
+    //     "edited": "Unauthorized and Sick , Some Illegal Immigrants Steer Clear of Medical <span style=\"color: blue;\">Marijuanas</span> "
+    // },
+    // {
+    //     "original": "North Korean Official : <span style=\"color: blue;\">Situation</span> in a ' Vicious Cycle '",
+    //     "edited": "North Korean Official : <span style=\"color: blue;\">Dryer</span> in a ' Vicious Cycle '"
+    // },
+    // {
+    //     "original": "Trump \u2019s Plan To Kick Out Mexican <span style=\"color: blue;\">Immigrants</span> Will Absolutely Need Mexican Cooperation",
+    //     "edited": "Trump \u2019s Plan To Kick Out Mexican <span style=\"color: blue;\">food</span> Will Absolutely Need Mexican Cooperation"
+    // },
+    // {
+    //     "original": "South Korean court upholds motion to <span style=\"color: blue;\">impeach</span> President Park Geun-hye",
+    //     "edited": "South Korean court upholds motion to <span style=\"color: blue;\">kiss</span> President Park Geun-hye"
+    // },
+    // {
+    //     "original": "Congress Struggles to Confront Sexual Harassment as <span style=\"color: blue;\">Stories</span> Pile Up",
+    //     "edited": "Congress Struggles to Confront Sexual Harassment as <span style=\"color: blue;\">homeworks</span> Pile Up"
+    // },
+    // {
+    //     "original": "China ' holding at least 120,000 <span style=\"color: blue;\">Uighurs</span> in re-education camps '",
+    //     "edited": "China ' holding at least 120,000 <span style=\"color: blue;\">Pandas</span> in re-education camps '"
+    // },
+    // {
+    //     "original": "The moment a US father hears his dead <span style=\"color: blue;\">daughter</span> 's heartbeat",
+    //     "edited": "The moment a US father hears his dead <span style=\"color: blue;\">Frog</span> 's heartbeat"
+    // },
+    // {
+    //     "original": "As a proud Israeli I want <span style=\"color: blue;\">peace</span> . Killing Gazans wo n\u2019t bring that",
+    //     "edited": "As a proud Israeli I want <span style=\"color: blue;\">falafel</span> . Killing Gazans wo n\u2019t bring that"
+    // },
+    // {
+    //     "original": "The Kremlin says Putin and Trump agreed during <span style=\"color: blue;\">phone</span> call to step up U.S.-Russian diplomatic efforts on Syria .",
+    //     "edited": "The Kremlin says Putin and Trump agreed during <span style=\"color: blue;\">booty</span> call to step up U.S.-Russian diplomatic efforts on Syria ."
+    // },
+    // {
+    //     "original": "Mnuchin 's $ 800K Travel Bill Approved ; <span style=\"color: blue;\">Watchdog</span> Seeks More Rigor",
+    //     "edited": "Mnuchin 's $ 800K Travel Bill Approved ; <span style=\"color: blue;\">Hamburger</span> Seeks More Rigor"
+    // },
+    // {
+    //     "original": "CNN 's Jake Tapper to <span style=\"color: blue;\">interview</span> Paul Ryan following retirement announcement",
+    //     "edited": "CNN 's Jake Tapper to <span style=\"color: blue;\">wrestle</span> Paul Ryan following retirement announcement"
+    // },
+    // {
+    //     "original": "Trump again <span style=\"color: blue;\">undercuts</span> his secretary of State , dashing potential progress on North Korea",
+    //     "edited": "Trump again <span style=\"color: blue;\">educates</span> his secretary of State , dashing potential progress on North Korea"
+    // },
+    // {
+    //     "original": "In a reversal , the Trump administration now says green <span style=\"color: blue;\">card</span> holders can enter the US",
+    //     "edited": "In a reversal , the Trump administration now says green <span style=\"color: blue;\">tomato</span> holders can enter the US"
+    // },
+    // {
+    //     "original": "Who is Rachel Crooks ? Trump sexual assault accuser enters Ohio <span style=\"color: blue;\">race</span> in district president carried",
+    //     "edited": "Who is Rachel Crooks ? Trump sexual assault accuser enters Ohio <span style=\"color: blue;\">carnival</span> in district president carried"
+    // },
+    // {
+    //     "original": "Trump <span style=\"color: blue;\">travel</span> ban blocked by Va.-based federal appeals court",
+    //     "edited": "Trump <span style=\"color: blue;\">eating</span> ban blocked by Va.-based federal appeals court"
+    // },
+    // {
+    //     "original": "Trump willing to pursue ' temporary deal ' on <span style=\"color: blue;\">healthcare</span> ",
+    //     "edited": "Trump willing to pursue ' temporary deal ' on <span style=\"color: blue;\">tacos</span> "
+    // },
+    // {
+    //     "original": "Trump offers ' congratulations ' to <span style=\"color: blue;\">America</span> on anniversary of Mueller investigation",
+    //     "edited": "Trump offers ' congratulations ' to <span style=\"color: blue;\">himself</span> on anniversary of Mueller investigation"
+    // },
+    // {
+    //     "original": "A judge ruled this <span style=\"color: blue;\">veteran</span> is a US citizen . Now he faces deportation to Mexico",
+    //     "edited": "A judge ruled this <span style=\"color: blue;\">cat</span> is a US citizen . Now he faces deportation to Mexico"
+    // },
+    // {
+    //     "original": "U.S. Already Feeling <span style=\"color: blue;\">Consequences</span> Of Global Warming , Draft Report Finds",
+    //     "edited": "U.S. Already Feeling <span style=\"color: blue;\">Chills</span> Of Global Warming , Draft Report Finds"
+    // },
+    // {
+    //     "original": "Sanders and Warren are criticizing Obama \u2019s $ 400,000 Wall Street <span style=\"color: blue;\">speech</span> . Here \u2019s why it \u2019s a bad idea .",
+    //     "edited": "Sanders and Warren are criticizing Obama \u2019s $ 400,000 Wall Street <span style=\"color: blue;\">cake</span> . Here \u2019s why it \u2019s a bad idea ."
+    // },
+    // {
+    //     "original": "Afghan girls <span style=\"color: blue;\">robotics</span> team allowed in by Trump arrives in U.S.",
+    //     "edited": "Afghan girls <span style=\"color: blue;\">gymnastics</span> team allowed in by Trump arrives in U.S."
+    // },
+    // {
+    //     "original": "New Venezuela assembly declares itself superior govt <span style=\"color: blue;\">branch</span> ",
+    //     "edited": "New Venezuela assembly declares itself superior govt <span style=\"color: blue;\">tree</span> "
+    // },
+    // {
+    //     "original": "Fukushima \u2019s radioactive <span style=\"color: blue;\">water</span> may have been leaking for months",
+    //     "edited": "Fukushima \u2019s radioactive <span style=\"color: blue;\">bladder</span> may have been leaking for months"
+    // },
+    // {
+    //     "original": "Antonio Villaraigosa left the mayor 's office ' with no job , no house , no car . ' Here 's how he <span style=\"color: blue;\">made</span> millions since then",
+    //     "edited": "Antonio Villaraigosa left the mayor 's office ' with no job , no house , no car . ' Here 's how he <span style=\"color: blue;\">stole</span> millions since then"
+    // },
+    // {
+    //     "original": "Orange County <span style=\"color: blue;\">Rep. Dana Rohrabacher</span> was lobbied by the former Soviet military intelligence officer at the Trump meeting",
+    //     "edited": "Orange County <span style=\"color: blue;\">rapper</span> was lobbied by the former Soviet military intelligence officer at the Trump meeting"
+    // },
+    // {
+    //     "original": "\u201c Trump \u2019s problem child \u201d : Mark Levin , Alex Jones rage against Ivanka after her \u201c uncomfortable <span style=\"color: blue;\">embrace</span> of refugees \u201d",
+    //     "edited": "\u201c Trump \u2019s problem child \u201d : Mark Levin , Alex Jones rage against Ivanka after her \u201c uncomfortable <span style=\"color: blue;\">purchase</span> of refugees \u201d"
+    // },
+    // {
+    //     "original": "Trump \u2019s counter-jihad How the anti-Muslim fringe conquered the White <span style=\"color: blue;\">House</span> .",
+    //     "edited": "Trump \u2019s counter-jihad How the anti-Muslim fringe conquered the White <span style=\"color: blue;\">trash</span> ."
+    // },
+    // {
+    //     "original": "WHO calls for <span style=\"color: blue;\">elimination</span> of trans fat by 2023",
+    //     "edited": "WHO calls for <span style=\"color: blue;\">Monetization</span> of trans fat by 2023"
+    // },
+    // {
+    //     "original": "Woody Guthrie Wrote of His Contempt for His <span style=\"color: blue;\">Landlord</span> , Donald Trump \u2019s Father",
+    //     "edited": "Woody Guthrie Wrote of His Contempt for His <span style=\"color: blue;\">Sister</span> , Donald Trump \u2019s Father"
+    // },
+    // {
+    //     "original": "Sanders and Warren are criticizing Obama \u2019s $ 400,000 Wall <span style=\"color: blue;\">Street</span> speech . Here \u2019s why it \u2019s a bad idea .",
+    //     "edited": "Sanders and Warren are criticizing Obama \u2019s $ 400,000 Wall <span style=\"color: blue;\">Banger</span> speech . Here \u2019s why it \u2019s a bad idea ."
+    // },
+    // {
+    //     "original": "Sean Spicer defends inauguration claim : ' Sometimes we can disagree with <span style=\"color: blue;\">facts</span> '",
+    //     "edited": "Sean Spicer defends inauguration claim : ' Sometimes we can disagree with <span style=\"color: blue;\">fudge</span> '"
+    // },
+    // {
+    //     "original": "Americans living in rural areas more likely to die by <span style=\"color: blue;\">suicide</span> ",
+    //     "edited": "Americans living in rural areas more likely to die by <span style=\"color: blue;\">boredom</span> "
+    // },
+    // {
+    //     "original": "Indian opposition calls for investigation into Adani over financial <span style=\"color: blue;\">fraud</span> allegations",
+    //     "edited": "Indian opposition calls for investigation into Adani over financial <span style=\"color: blue;\">generosity</span> allegations"
+    // },
+    // {
+    //     "original": "Florida House Passes <span style=\"color: blue;\">Gun Control</span> Package , Measure Awaits Governor 's Signature",
+    //     "edited": "Florida House Passes <span style=\"color: blue;\">breakfast</span> Package , Measure Awaits Governor 's Signature"
+    // },
+    // {
+    //     "original": "Kremlin <span style=\"color: blue;\">tweets</span> during closed-door Oval Office meeting with Trump",
+    //     "edited": "Kremlin <span style=\"color: blue;\">sleeps</span> during closed-door Oval Office meeting with Trump"
+    // },
+    // {
+    //     "original": "CNN files lawsuit seeking Comey 's Trump <span style=\"color: blue;\">memos</span> ",
+    //     "edited": "CNN files lawsuit seeking Comey 's Trump <span style=\"color: blue;\">poems</span> "
+    // },
+    // {
+    //     "original": "Is 5G technology dangerous ? Early data shows a slight increase of <span style=\"color: blue;\">tumors</span> in male rats exposed to cellphone radiation",
+    //     "edited": "Is 5G technology dangerous ? Early data shows a slight increase of <span style=\"color: blue;\">selfies</span> in male rats exposed to cellphone radiation"
+    // },
+    // {
+    //     "original": "Donald Trump claims Barack Obama ordered ' <span style=\"color: blue;\">wire</span> tap ' on Trump Tower , but provides no evidence",
+    //     "edited": "Donald Trump claims Barack Obama ordered ' <span style=\"color: blue;\">beer</span> tap ' on Trump Tower , but provides no evidence"
+    // },
+    // {
+    //     "original": "Pakistan postpones U.S. visit after Trump <span style=\"color: blue;\">speech</span> ",
+    //     "edited": "Pakistan postpones U.S. visit after Trump <span style=\"color: blue;\">haircut</span> "
+    // },
+    // {
+    //     "original": "NPR News : Far-Left <span style=\"color: blue;\">Candidate</span> Jean-Luc Melenchon Surges In Polls Ahead Of French Election",
+    //     "edited": "NPR News : Far-Left <span style=\"color: blue;\">panda</span> Jean-Luc Melenchon Surges In Polls Ahead Of French Election"
+    // },
+    // {
+    //     "original": "4 arrested in Sydney <span style=\"color: blue;\">raids</span> to stop terrorist attack",
+    //     "edited": "4 arrested in Sydney <span style=\"color: blue;\">boasting</span> to stop terrorist attack"
+    // },
+    // {
+    //     "original": "NRA 's Role In Connecting Trump Campaign With Russians Is Under Senate <span style=\"color: blue;\">Investigation</span> ",
+    //     "edited": "NRA 's Role In Connecting Trump Campaign With Russians Is Under Senate <span style=\"color: blue;\">Mattress</span> "
+    // },
+    // {
+    //     "original": "A U.S. citizen has escaped a Bali <span style=\"color: blue;\">prison</span> by climbing out of the roof",
+    //     "edited": "A U.S. citizen has escaped a Bali <span style=\"color: blue;\">movie</span> by climbing out of the roof"
+    // },
+    // {
+    //     "original": "America 's military wo n't save us from Trump 's <span style=\"color: blue;\">fascism</span> ",
+    //     "edited": "America 's military wo n't save us from Trump 's <span style=\"color: blue;\">hair</span> "
+    // },
+    // {
+    //     "original": " <span style=\"color: blue;\">Lawless</span> waters test Southeast Asian nations in fight against Islamic State",
+    //     "edited": " <span style=\"color: blue;\">Stinky</span> waters test Southeast Asian nations in fight against Islamic State"
+    // },
+    // {
+    //     "original": "Report : Pro teams avoiding <span style=\"color: blue;\">Trump</span> hotels",
+    //     "edited": "Report : Pro teams avoiding <span style=\"color: blue;\">cheap</span> hotels"
+    // },
+    // {
+    //     "original": "Trump <span style=\"color: blue;\">Product</span> Endorsements Drive Consumers ... Away",
+    //     "edited": "Trump <span style=\"color: blue;\">Halitosis</span> Endorsements Drive Consumers ... Away"
+    // },
+    // {
+    //     "original": "Obama <span style=\"color: blue;\">proves</span> himself as a kind Politician .",
+    //     "edited": "Obama <span style=\"color: blue;\">sketches</span> himself as a kind Politician ."
+    // },
+    // {
+    //     "original": "Taiwan train company wants <span style=\"color: blue;\">apology</span> for ' demon doll ' passenger",
+    //     "edited": "Taiwan train company wants <span style=\"color: blue;\">date</span> for ' demon doll ' passenger"
+    // },
+    // {
+    //     "original": "North and South Korea Agree to <span style=\"color: blue;\">Border</span> Talks Next Week",
+    //     "edited": "North and South Korea Agree to <span style=\"color: blue;\">pillow</span> Talks Next Week"
+    // },
+    // {
+    //     "original": "Bernie Sanders Fined for Colluding with <span style=\"color: blue;\">Australian Labor Party</span> ",
+    //     "edited": "Bernie Sanders Fined for Colluding with <span style=\"color: blue;\">Kangaroos</span> "
+    // },
+    // {
+    //     "original": "Crowd <span style=\"color: blue;\">catches</span> girl after ride fall",
+    //     "edited": "Crowd <span style=\"color: blue;\">cheers</span> girl after ride fall"
+    // },
+    // {
+    //     "original": "Over 10,000 migrant <span style=\"color: blue;\">children</span> are now in US government custody at 100 shelters in 14 states",
+    //     "edited": "Over 10,000 migrant <span style=\"color: blue;\">iguanas</span> are now in US government custody at 100 shelters in 14 states"
+    // },
+    // {
+    //     "original": "Man Sets Off Explosive Device at L.A.-Area Cheesecake Factory , No <span style=\"color: blue;\">Injuries</span> ",
+    //     "edited": "Man Sets Off Explosive Device at L.A.-Area Cheesecake Factory , No <span style=\"color: blue;\">complaints</span> "
+    // },
+    // {
+    //     "original": "Ben Shapiro : Americans more tolerant but hate each other 's <span style=\"color: blue;\">politics</span> ",
+    //     "edited": "Ben Shapiro : Americans more tolerant but hate each other 's <span style=\"color: blue;\">meatloaf</span> "
+    // },
+    // {
+    //     "original": "RNC \u201c cloakroom \u201d was secretly funded by corporate <span style=\"color: blue;\">cash</span> ",
+    //     "edited": "RNC \u201c cloakroom \u201d was secretly funded by corporate <span style=\"color: blue;\">jackets</span> "
+    // },
+    // {
+    //     "original": "' UK <span style=\"color: blue;\">wellbeing</span> rises after Brexit vote '",
+    //     "edited": "' UK <span style=\"color: blue;\">landfill</span> rises after Brexit vote '"
+    // },
+    // {
+    //     "original": "Gov. Kasich slams President Trump 's move on <span style=\"color: blue;\">health</span> care subsidies",
+    //     "edited": "Gov. Kasich slams President Trump 's move on <span style=\"color: blue;\">haircut</span> care subsidies"
+    // },
+    // {
+    //     "original": "Canada to <span style=\"color: blue;\">legalize</span> recreational marijuana in 2018 , official says",
+    //     "edited": "Canada to <span style=\"color: blue;\">smoke</span> recreational marijuana in 2018 , official says"
+    // },
+    // {
+    //     "original": "Turkey tells <span style=\"color: blue;\">citizens</span> to reconsider travelling to US",
+    //     "edited": "Turkey tells <span style=\"color: blue;\">chickens</span> to reconsider travelling to US"
+    // },
+    // {
+    //     "original": "The battles ahead : <span style=\"color: blue;\">Meet</span> the biggest opponents of single-payer",
+    //     "edited": "The battles ahead : <span style=\"color: blue;\">punch</span> the biggest opponents of single-payer"
+    // },
+    // {
+    //     "original": "What every major <span style=\"color: blue;\">health</span> group has said about Graham-Cassidy",
+    //     "edited": "What every major <span style=\"color: blue;\">rock</span> group has said about Graham-Cassidy"
+    // },
+    // {
+    //     "original": "Eric Trumo Claims <span style=\"color: blue;\">Journalists</span> Drank ' Cases of Red Bull ' To Keep up With His 71 Years Old Dad",
+    //     "edited": "Eric Trumo Claims <span style=\"color: blue;\">Toddlers</span> Drank ' Cases of Red Bull ' To Keep up With His 71 Years Old Dad"
+    // },
+    // {
+    //     "original": "Alabama agonizes over <span style=\"color: blue;\">Trump</span> attacks on Sessions",
+    //     "edited": "Alabama agonizes over <span style=\"color: blue;\">sneak</span> attacks on Sessions"
+    // },
+    // {
+    //     "original": "GOPer : Schiff hopes he 'll benefit from Trump 's <span style=\"color: blue;\">attack</span> ",
+    //     "edited": "GOPer : Schiff hopes he 'll benefit from Trump 's <span style=\"color: blue;\">toupee</span> "
+    // },
+    // {
+    //     "original": "APNewsBreak : Border <span style=\"color: blue;\">arrests</span> plunge , deportation arrests soar",
+    //     "edited": "APNewsBreak : Border <span style=\"color: blue;\">parties</span> plunge , deportation arrests soar"
+    // },
+    // {
+    //     "original": "What would happen if Trump sparked a <span style=\"color: blue;\">trade</span> war with China ?",
+    //     "edited": "What would happen if Trump sparked a <span style=\"color: blue;\">thumb</span> war with China ?"
+    // },
+    // {
+    //     "original": "YouTube accused of ' violence ' against young children over kids ' <span style=\"color: blue;\">content</span> ",
+    //     "edited": "YouTube accused of ' violence ' against young children over kids ' <span style=\"color: blue;\">breakfast</span> "
+    // },
+    // {
+    //     "original": "Iranian general threatens to ' <span style=\"color: blue;\">bury</span> ' Donald Trump",
+    //     "edited": "Iranian general threatens to ' <span style=\"color: blue;\">wedgie</span> ' Donald Trump"
+    // },
+    // {
+    //     "original": "Rwanda <span style=\"color: blue;\">killed</span> 37 petty criminals , Human Rights Watch says - BBC News",
+    //     "edited": "Rwanda <span style=\"color: blue;\">pets</span> 37 petty criminals , Human Rights Watch says - BBC News"
+    // },
+    // {
+    //     "original": "Over 10,000 migrant <span style=\"color: blue;\">children</span> are now in US government custody at 100 shelters in 14 states",
+    //     "edited": "Over 10,000 migrant <span style=\"color: blue;\">llamas</span> are now in US government custody at 100 shelters in 14 states"
+    // },
+    // {
+    //     "original": "Carville : \u2018 No One \u2019 Is in Charge of the <span style=\"color: blue;\">Democratic Party</span> ",
+    //     "edited": "Carville : \u2018 No One \u2019 Is in Charge of the <span style=\"color: blue;\">abyss</span> "
+    // },
+    // {
+    //     "original": " <span style=\"color: blue;\">Leading</span> Constitutional Scholar : Comey Firing Legal , but Trump Has Committed Impeachable Offenses",
+    //     "edited": " <span style=\"color: blue;\">Exhausted</span> Constitutional Scholar : Comey Firing Legal , but Trump Has Committed Impeachable Offenses"
+    // },
+    // {
+    //     "original": "Donald Trump <span style=\"color: blue;\">Blasts</span> Reporters at Trump Tower For One-Sided Charlottesville Reporting",
+    //     "edited": "Donald Trump <span style=\"color: blue;\">Moons</span> Reporters at Trump Tower For One-Sided Charlottesville Reporting"
+    // },
+    // {
+    //     "original": "Cohen Remains Trump 's <span style=\"color: blue;\">Lawyer</span> Despite Probe , Spokesman Says",
+    //     "edited": "Cohen Remains Trump 's <span style=\"color: blue;\">playmate</span> Despite Probe , Spokesman Says"
+    // }
   ];
-    const headlines = all_headlines.slice(0, 10)
+    // const headlines = all_headlines.slice(0, 10)
 
   // Get headline ID from URL and load headlines
   const url = new URL(window.location.href);
@@ -959,7 +959,7 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
-  const version = 'no_AI_15';
+  const version = 'no_AI_16';
 
   // Track worker progress and enforce a limit of 3 HITs per worker
   if (workerId !== 'preview') {
