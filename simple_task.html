@@ -80,7 +80,8 @@
             <h3>Instruction</h3>
             <p>Welcome to humor rating task! 🎉</p>
             <p>In this task, you will see an <em>original news headline</em> and an <em>edited version with one word replaced</em>. Your goal is to rate how funny the edited version is (less funny 👎, mediocre 😐 or funny 👍). Then, please tell us how much you understand the context of the headline. Optionally, you can provide a reasoning on your humor rating. </p>
-            <p>*Note: the headlines are from real news reports and probably contain political contents. Also, the headlines and the edited versions are directly obtained from a CS publication dataset <em>SemEval-2020 Task 7</em>. </p>
+            <p>To fit a 10-minute time frame, you will need to do 15 trails/HITs on this task. Your progress is reflected on the very top of the page. Good luck!</p>
+            <p style="color: #8c8c8c;">*Note: the headlines are from real news reports and probably contain political contents. Also, the headlines and the edited versions are directly obtained from a CS publication dataset <em>SemEval-2020 Task 7</em>. </p>
             <h3>Example</h3>
             <p><strong>Original headline:</strong> WHO calls for <span style="color: blue;">elimination</span> of trans fat by 2023</p>
             <p><strong>Edited headline:</strong> WHO calls for <span style="color: blue;">monetization</span> of trans fat by 2023</p>
@@ -946,7 +947,7 @@
         "edited": "Cohen Remains Trump 's <span style=\"color: blue;\">playmate</span> Despite Probe , Spokesman Says"
     }
   ];
-  const headlines = all_headlines.slice(0, 10)
+  const headlines = all_headlines.slice(0, 20)
 
   // Get headline ID from URL and load headlines
   const url = new URL(window.location.href);
@@ -959,7 +960,7 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
-  const version = 'no_AI_23';
+  const version = 'no_AI_25';
 
   // Track worker progress and enforce a limit of 3 HITs per worker
   if (workerId !== 'preview') {
@@ -967,7 +968,7 @@
     let completedHITs = JSON.parse(localStorage.getItem(progressKey) || '[]');
 
     // If the worker has already completed 3 or more HITs, block further work
-    if (completedHITs.length >= 3) {
+    if (completedHITs.length >= 15) {
       const blockDiv = document.createElement('div');
       blockDiv.style.cssText = 'background: #fff3cd; color: #664d03; padding: 16px; margin: 16px 0; border-radius: 8px; border: 1px solid #ffecb5; text-align: center; font-size: 16px;';
       blockDiv.innerHTML = '✅ You have already completed 3 HITs for this task. Please return/exit this HIT. Thank you!';
