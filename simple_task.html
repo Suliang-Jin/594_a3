@@ -958,6 +958,7 @@
   // Get headline ID from URL and load headlines
   const url = new URL(window.location.href);
   const headlineId = parseInt(url.searchParams.get('headline_id')) || 0;
+  const raw_headlineId = parseInt(url.searchParams.get('headline_id'));
   const workerId = url.searchParams.get('workerId') || 'preview';
   
   const h = headlines[headlineId] || headlines[0];
@@ -966,7 +967,7 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
-  const version = 'no_AI_29';
+  const version = 'no_AI_31';
 
   // Track worker progress and enforce a limit of 3 HITs per worker
   if (workerId !== 'preview') {
@@ -1012,7 +1013,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     const el = document.createElement("div");
     el.style = "background:#ffeeba;padding:6px;font-size:14px;color:#000;";
-    el.innerText = `DEBUG: headlineId = ${headlineId}`;
+    el.innerText = `DEBUG: headlineId = ${raw_headlineId}`;
     document.body.prepend(el);
   });
   </script>
