@@ -85,7 +85,7 @@
               <strong><span style="color: #4CAF50;"><span id="limit-placeholder"></span></span></strong>
               trails/HITs on this task. Your progress is reflected on the very top of the page. Good luck!
             </p>
-            <p style="color: #8c8c8c;">*Note: the headlines are from real news reports and probably contain political contents. Also, the headlines and the edited versions are directly obtained from a CS publication dataset <em>SemEval-2020 Task 7</em>. </p>
+            <p style="color: #8c8c8c;">*Note: The headlines are from real news reports and probably contain political contents, so please keep your comfort in mind while working.  Also, the headlines and the edited versions are directly obtained from a CS publication dataset <em>SemEval-2020 Task 7</em>. </p>
             <h3>Example</h3>
             <p><strong>Original headline:</strong> WHO calls for <span style="color: blue;">elimination</span> of trans fat by 2023</p>
             <p><strong>Edited headline:</strong> WHO calls for <span style="color: blue;">monetization</span> of trans fat by 2023</p>
@@ -149,7 +149,7 @@
 
   <script>
   // ==================== Embedded dataset ====================
-  const all_headlines = [
+  const headlines = [
     {
         "original": " <span style=\"color: blue;\">Avalanches</span> in Afghanistan kill at least 54",
         "edited": " <span style=\"color: blue;\">Martians</span> in Afghanistan kill at least 54"
@@ -951,8 +951,8 @@
         "edited": "Cohen Remains Trump 's <span style=\"color: blue;\">playmate</span> Despite Probe , Spokesman Says"
     }
   ];
-  const headlines = all_headlines.slice(0, 5);
-  const limit = 3;
+  // const headlines = all_headlines.slice(0, 5);
+  const limit = 10;
   document.getElementById("limit-placeholder").innerText = limit;
 
   // Get headline ID from URL and load headlines
@@ -967,7 +967,7 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
-  const version = 'no_AI_31';
+  const version = 'no_AI_32';
 
   // Track worker progress and enforce a limit of 3 HITs per worker
   if (workerId !== 'preview') {
