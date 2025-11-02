@@ -951,8 +951,8 @@
         "edited": "Cohen Remains Trump 's <span style=\"color: blue;\">playmate</span> Despite Probe , Spokesman Says"
     }
   ];
-  const headlines = all_headlines.slice(0, 5)
-  const limit = 3
+  const headlines = all_headlines.slice(0, 5);
+  const limit = 3;
   document.getElementById("limit-placeholder").innerText = limit;
 
   // Get headline ID from URL and load headlines
@@ -966,7 +966,7 @@
   document.getElementById("orig-headline").innerHTML = h.original;
   document.getElementById("edited-headline").innerHTML = h.edited;
 
-  const version = 'no_AI_28';
+  const version = 'no_AI_29';
 
   // Track worker progress and enforce a limit of 3 HITs per worker
   if (workerId !== 'preview') {
